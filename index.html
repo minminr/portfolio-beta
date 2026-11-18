@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="荣敏，高级体验设计师作品集。专注 AI 产品体验、复杂企业系统与设计系统建设。" />
+  <title>荣敏｜高级体验设计师作品集</title>
+  <style>
+    :root {
+      --ink: #11131a;
+      --muted: #697080;
+      --line: #e7e9ee;
+      --paper: #ffffff;
+      --soft: #f7f8fa;
+      --dark: #070914;
+      --violet: #795cff;
+      --blue: #2d7dff;
+      --cyan: #19c9e8;
+      --green: #1fcf9f;
+      --pink: #ff66ba;
+      --orange: #ff9b51;
+      --max: 1240px;
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    ::selection { color: #fff; background: var(--violet); }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 100;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--violet), var(--cyan), var(--green));
+    }
+    .nav {
+      position: fixed;
+      z-index: 90;
+      top: 18px;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      width: min(calc(100% - 32px), 1120px);
+      padding: 10px 12px 10px 18px;
+      color: rgba(255,255,255,.72);
+      background: rgba(8,10,21,.72);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      backdrop-filter: blur(18px);
+      transform: translateX(-50%);
+      transition: background .3s, color .3s;
+    }
+    .nav.light {
+      color: #555d6c;
+      background: rgba(255,255,255,.82);
+      border-color: rgba(16,19,26,.1);
+      box-shadow: 0 12px 40px rgba(20,27,43,.08);
+    }
+    .nav-brand { margin-right: auto; color: #fff; font-weight: 720; letter-spacing: .02em; }
+    .nav.light .nav-brand { color: var(--ink); }
+    .nav-links { display: flex; gap: 22px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-contact {
+      padding: 9px 15px;
+      color: #fff;
+      background: linear-gradient(120deg, var(--violet), var(--blue));
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at 16% 22%, rgba(74,94,255,.26), transparent 28%),
+        radial-gradient(circle at 84% 65%, rgba(17,222,211,.18), transparent 30%),
+        var(--dark);
+    }
+    #starfield { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .88; }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, transparent, #000 28%, #000 70%, transparent);
+      transform: perspective(700px) rotateX(60deg) scale(1.6) translateY(18%);
+      transform-origin: center bottom;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      align-items: center;
+      width: min(calc(100% - 40px), var(--max));
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: 130px 0 190px;
+    }
+    .hero-kicker, .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .22em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+    .hero-kicker { color: rgba(255,255,255,.56); }
+    .hero-kicker::before, .eyebrow::before {
+      width: 34px;
+      height: 1px;
+      content: "";
+      background: currentColor;
+    }
+    .hero h1 {
+      max-width: 1040px;
+      margin: 0;
+      font-size: clamp(72px, 14vw, 182px);
+      font-weight: 820;
+      letter-spacing: -.075em;
+      line-height: .82;
+    }
+    .hero h1 span {
+      display: block;
+      color: transparent;
+      background: linear-gradient(110deg, #fff 2%, #9ee7ff 34%, #8c77ff 68%, #ff83c7);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 56px;
+      align-items: end;
+      margin-top: 76px;
+    }
+    .hero-title {
+      margin: 0 0 18px;
+      font-size: clamp(22px, 3vw, 40px);
+      font-weight: 620;
+      letter-spacing: -.035em;
+    }
+    .hero-copy {
+      max-width: 820px;
+      margin: 0;
+      color: rgba(255,255,255,.56);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .signal-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; align-items: end; }
+    .signal {
+      padding: 0;
+      cursor: default;
+      text-align: left;
+    }
+    .signal strong {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 95px;
+      font-weight: 760;
+      letter-spacing: -.075em;
+      line-height: .82;
+    }
+    .signal span {
+      display: block;
+      color: rgba(255,255,255,.45);
+      font-size: 18px;
+      letter-spacing: .08em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+    .hero-description {
+      position: absolute;
+      z-index: 3;
+      bottom: 24px;
+      left: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: min(calc(100% - 48px), 860px);
+      text-align: center;
+      transform: translateX(-50%);
+    }
+    .hero-down {
+      position: relative;
+      display: block;
+      width: 22px;
+      height: 42px;
+      opacity: .58;
+    }
+    .hero-down::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 34px;
+      background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.25));
+      content: "";
+      transform: translateX(-50%);
+    }
+    .hero-down::after {
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      content: "";
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .section, .case { position: relative; padding: 150px 0; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 76px;
+    }
+    .section-no {
+      display: block;
+      margin-bottom: 22px;
+      color: #a4a9b3;
+      font-size: 10px;
+      letter-spacing: .18em;
+    }
+    .display-title {
+      margin: 0;
+      color: transparent;
+      background: linear-gradient(115deg, var(--blue), var(--violet), var(--pink));
+      background-clip: text;
+      -webkit-background-clip: text;
+      font-size: clamp(48px, 7vw, 94px);
+      font-weight: 800;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+    .section-intro {
+      max-width: 530px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .mini-label {
+      color: #8b92a0;
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: .16em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+    .big-copy {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 54px);
+      font-weight: 680;
+      letter-spacing: -.045em;
+      line-height: 1.22;
+    }
+    .copy {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    .rule { height: 1px; margin: 80px 0; background: var(--line); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .profile { background: #fff; }
+    .profile .section-head { grid-template-columns: 1.35fr .75fr; gap: 48px; }
+    .profile-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
+    .portrait {
+      position: sticky;
+      top: 110px;
+      min-height: 520px;
+      overflow: hidden;
+      color: #fff;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(104,87,255,.9), rgba(35,167,255,.72) 52%, rgba(24,218,178,.72)),
+        #161a2a;
+    }
+    .portrait::before, .portrait::after {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 50%;
+      content: "";
+    }
+    .portrait::before { width: 330px; height: 330px; right: -90px; top: -70px; }
+    .portrait::after { width: 220px; height: 220px; left: -90px; bottom: -70px; }
+    .portrait-content { position: absolute; inset: auto 34px 34px; z-index: 2; }
+    .portrait-monogram {
+      position: absolute;
+      top: 28px;
+      left: 30px;
+      font-size: 130px;
+      font-weight: 800;
+      letter-spacing: -.1em;
+      opacity: .15;
+    }
+    .portrait-name { margin: 0 0 8px; font-size: 38px; font-weight: 750; letter-spacing: -.05em; }
+    .portrait-role { margin: 0; color: rgba(255,255,255,.7); font-size: 12px; letter-spacing: .08em; }
+    .profile-copy { padding-top: 8px; }
+    .profile-copy .big-copy { max-width: 720px; }
+    .profile-copy > .copy { max-width: 680px; margin: 28px 0 46px; }
+    .achievement {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
+      padding: 19px 0;
+      border-top: 1px solid var(--line);
+    }
+    .achievement:last-child { border-bottom: 1px solid var(--line); }
+    .achievement strong { color: var(--violet); font-size: 12px; }
+    .achievement span { font-size: 13px; line-height: 1.7; }
+    .career { margin-top: 44px; }
+    .career-row {
+      display: grid;
+      grid-template-columns: 1.15fr 1.25fr .8fr;
+      gap: 24px;
+      align-items: center;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+      font-size: 22px;
+      font-weight: 620;
+      letter-spacing: -.035em;
+      line-height: 1.25;
+    }
+    .career-company { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .company-icon {
+      position: relative;
+      display: grid;
+      flex: 0 0 46px;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      overflow: hidden;
+      color: #fff;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+      font-size: 15px;
+      font-weight: 820;
+      letter-spacing: -.04em;
+    }
+    .company-icon::after { color: #343946; content: attr(data-fallback); font-size: 11px; letter-spacing: -.03em; }
+    .company-icon img { position: absolute; z-index: 1; display: block; width: 76%; height: 76%; background: #fff; object-fit: contain; }
+    .company-icon-kc { border-color: transparent; background: linear-gradient(145deg, #795cff, #2d7dff); }
+    .company-icon-kc::after { color: #fff; font-size: 15px; }
+    .career-row > span { color: #343946; }
+    .career-row span:last-child { color: var(--muted); text-align: right; }
+
+    .capability { padding-top: 40px; background: var(--soft); }
+    .map {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 720px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 38px;
+      background: #fff;
+    }
+    .map-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .map-lines circle, .map-lines .connector {
+      fill: none;
+      stroke: #dfe3eb;
+      stroke-width: 1;
+      stroke-dasharray: 4 7;
+      transition: stroke .2s ease, stroke-width .2s ease;
+      vector-effect: non-scaling-stroke;
+    }
+    .map-lines .beam {
+      fill: none;
+      opacity: 0;
+      stroke: var(--beam);
+      stroke-width: 3;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 5px color-mix(in srgb, var(--beam) 55%, transparent));
+      vector-effect: non-scaling-stroke;
+    }
+    .map-core {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 210px;
+      height: 210px;
+      color: #fff;
+      text-align: center;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #8374ff, #395ee8 55%, #19254e);
+      box-shadow: 0 26px 80px rgba(55,86,225,.26);
+      isolation: isolate;
+      overflow: hidden;
+      transition: box-shadow .24s ease, transform .24s ease;
+    }
+    .map-core::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--active-node) 72%, #fff), var(--active-node) 52%, color-mix(in srgb, var(--active-node) 82%, #070914));
+      content: "";
+      opacity: 0;
+      transform: scale(.86);
+      transition: opacity .2s ease .14s, transform .24s ease .12s;
+    }
+    .map-core strong { display: block; font-size: 27px; letter-spacing: -.04em; }
+    .map-core span { display: block; margin-top: 8px; color: rgba(255,255,255,.62); font-size: 9px; letter-spacing: .12em; }
+    .core-default {
+      transition: opacity .32s ease, transform .42s cubic-bezier(.2,.8,.2,1);
+    }
+    .core-project {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      opacity: 0;
+      color: #fff;
+      font-size: 27px;
+      font-weight: 760;
+      letter-spacing: -.045em;
+      line-height: 1.12;
+      text-align: center;
+      transform: translateX(-150px);
+      transition: opacity .28s ease, transform .42s cubic-bezier(.2,.8,.2,1);
+    }
+    .map-node {
+      --node-transform: translateZ(0);
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      width: 220px;
+      min-height: 86px;
+      padding: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 16px 40px rgba(30,39,65,.07);
+      transform: var(--node-transform) scale(1);
+      transform-origin: center;
+      transition: width .38s cubic-bezier(.2,.8,.2,1), color .22s ease, border-color .22s ease, background .22s ease, box-shadow .3s ease, transform .38s cubic-bezier(.2,.8,.2,1);
+    }
+    .node-copy {
+      display: block;
+      transition: transform .38s cubic-bezier(.2,.8,.2,1);
+    }
+    .node-copy strong { display: block; margin-bottom: 3px; font-size: 26px; letter-spacing: -.045em; line-height: 1.08; }
+    .node-copy > span { color: var(--muted); font-size: 10px; line-height: 1.6; transition: color .22s ease; }
+    .node-orb {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      opacity: 0;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,.13);
+      transform: translate(-94px,-50%) rotate(-180deg) scale(.72);
+      transition: opacity .2s ease, transform .42s cubic-bezier(.18,.9,.28,1.18);
+    }
+    .node-orb b {
+      color: var(--node);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 850;
+      letter-spacing: -.09em;
+      line-height: 1;
+    }
+    .map-node:is(:hover,:focus-visible) {
+      width: 330px;
+      color: #fff;
+      border-color: transparent;
+      background: var(--node);
+      box-shadow: 0 22px 54px color-mix(in srgb, var(--node) 28%, transparent);
+      transform: var(--node-transform) scale(1.06);
+      outline: none;
+    }
+    .map-node:is(:hover,:focus-visible) .node-copy { transform: translateX(100px); }
+    .map-node:is(:hover,:focus-visible) .node-copy > span { color: rgba(255,255,255,.74); }
+    .map-node:is(:hover,:focus-visible) .node-orb { opacity: 1; transform: translate(0,-50%) rotate(0) scale(1); }
+    .n1 { --node: #f04438; --node-transform: translateX(-50%); top: 64px; left: 50%; }
+    .n2 { --node: #2878ff; top: 230px; right: 52px; transform-origin: right center; }
+    .n3 { --node: #795cff; right: 168px; bottom: 55px; transform-origin: right center; }
+    .n4 { --node: #18a66a; bottom: 55px; left: 168px; transform-origin: left center; }
+    .n5 { --node: #121318; top: 230px; left: 52px; transform-origin: left center; }
+
+    .map:has(.n1:is(:hover,:focus-visible)) { --active-node: #f04438; }
+    .map:has(.n2:is(:hover,:focus-visible)) { --active-node: #2878ff; }
+    .map:has(.n3:is(:hover,:focus-visible)) { --active-node: #795cff; }
+    .map:has(.n4:is(:hover,:focus-visible)) { --active-node: #18a66a; }
+    .map:has(.n5:is(:hover,:focus-visible)) { --active-node: #121318; }
+    .map:has(.map-node:is(:hover,:focus-visible)) .map-core {
+      box-shadow: 0 28px 86px color-mix(in srgb, var(--active-node) 30%, transparent);
+      transform: scale(1.025);
+    }
+    .map:has(.map-node:is(:hover,:focus-visible)) .map-core::before { opacity: 1; transform: scale(1); }
+    .map:has(.map-node:is(:hover,:focus-visible)) .core-default {
+      opacity: 0;
+      transform: translateX(150px);
+    }
+    .map:has(.n1:is(:hover,:focus-visible)) .core-project-n1,
+    .map:has(.n2:is(:hover,:focus-visible)) .core-project-n2,
+    .map:has(.n3:is(:hover,:focus-visible)) .core-project-n3,
+    .map:has(.n4:is(:hover,:focus-visible)) .core-project-n4,
+    .map:has(.n5:is(:hover,:focus-visible)) .core-project-n5 {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .map:has(.n1:is(:hover,:focus-visible)) .connector-n1,
+    .map:has(.n2:is(:hover,:focus-visible)) .connector-n2,
+    .map:has(.n3:is(:hover,:focus-visible)) .connector-n3,
+    .map:has(.n4:is(:hover,:focus-visible)) .connector-n4,
+    .map:has(.n5:is(:hover,:focus-visible)) .connector-n5 {
+      stroke: var(--active-node);
+      stroke-width: 1.5;
+    }
+    .map:has(.n1:is(:hover,:focus-visible)) .beam-n1,
+    .map:has(.n2:is(:hover,:focus-visible)) .beam-n2,
+    .map:has(.n3:is(:hover,:focus-visible)) .beam-n3,
+    .map:has(.n4:is(:hover,:focus-visible)) .beam-n4,
+    .map:has(.n5:is(:hover,:focus-visible)) .beam-n5 {
+      animation: map-radiate .38s cubic-bezier(.16,.82,.3,1) forwards;
+    }
+    @keyframes map-radiate {
+      0% { opacity: .95; stroke-dashoffset: 1; }
+      72% { opacity: .88; }
+      100% { opacity: .3; stroke-dashoffset: 0; }
+    }
+
+    .case { overflow: hidden; background: var(--paper); }
+    .case + .case { border-top: 1px solid var(--line); }
+    .case::before {
+      position: absolute;
+      top: 0;
+      right: -15%;
+      width: 48%;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--case) 14%, transparent), transparent 68%);
+      content: "";
+      pointer-events: none;
+    }
+    .case-top {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 110px;
+    }
+    .case-index { margin-bottom: 30px; color: var(--case); font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    .case-title {
+      margin: 0 0 28px;
+      color: transparent;
+      background: linear-gradient(115deg, var(--case), var(--case2));
+      background-clip: text;
+      -webkit-background-clip: text;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 820;
+      letter-spacing: -.07em;
+      line-height: .96;
+    }
+    .case-lead { max-width: 720px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+    .case-ai .case-lead {
+      color: var(--violet);
+      font-size: 60px;
+      font-weight: 760;
+      letter-spacing: -.055em;
+      line-height: 1.08;
+    }
+    .case-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .meta {
+      min-height: 118px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.76);
+    }
+    .meta strong { display: block; margin-top: 18px; font-size: 15px; line-height: 1.4; }
+    .metric {
+      padding: 30px 0 25px;
+      border-top: 1px solid var(--line);
+    }
+    .metric strong {
+      display: block;
+      color: var(--case);
+      font-size: clamp(32px, 4vw, 60px);
+      font-weight: 760;
+      letter-spacing: -.055em;
+    }
+    .metric span { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .case-block { margin-top: 110px; }
+    .block-head {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 42px;
+    }
+    .block-head h3 {
+      max-width: 700px;
+      margin: 0;
+      font-size: clamp(28px, 4vw, 50px);
+      font-weight: 680;
+      letter-spacing: -.045em;
+      line-height: 1.15;
+    }
+    .line-card {
+      position: relative;
+      min-height: 220px;
+      overflow: hidden;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.72);
+    }
+    .line-card::after {
+      position: absolute;
+      right: -45px;
+      bottom: -45px;
+      width: 120px;
+      height: 120px;
+      border: 1px solid color-mix(in srgb, var(--case) 28%, transparent);
+      border-radius: 50%;
+      content: "";
+    }
+    .line-card h4 { margin: 26px 0 12px; font-size: 16px; letter-spacing: -.02em; }
+    .line-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.75; }
+    .line-card .num { color: var(--case); font-size: 9px; font-weight: 800; letter-spacing: .14em; }
+    .diagram {
+      overflow: hidden;
+      padding: 42px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(rgba(80,90,120,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80,90,120,.045) 1px, transparent 1px),
+        #fff;
+      background-size: 28px 28px;
+    }
+    .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .flow-step {
+      position: relative;
+      min-height: 130px;
+      padding: 18px 14px;
+      border: 1px solid color-mix(in srgb, var(--case) 34%, #dfe3eb);
+      border-radius: 16px;
+      background: rgba(255,255,255,.9);
+    }
+    .flow-step:not(:last-child)::after {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: calc(100% + 1px);
+      width: 16px;
+      height: 1px;
+      content: "";
+      background: var(--case);
+    }
+    .flow-step b { display: block; margin: 10px 0 7px; font-size: 12px; }
+    .flow-step span { color: var(--muted); font-size: 9px; line-height: 1.55; }
+    .flow-step i {
+      display: grid;
+      place-items: center;
+      width: 23px;
+      height: 23px;
+      color: var(--case);
+      border: 1px solid var(--case);
+      border-radius: 50%;
+      font-size: 8px;
+      font-style: normal;
+    }
+    .quote {
+      margin-top: 28px;
+      padding: 26px 28px;
+      color: color-mix(in srgb, var(--case) 75%, #111);
+      border-left: 2px solid var(--case);
+      background: color-mix(in srgb, var(--case) 5%, #fff);
+      font-size: 15px;
+      font-weight: 620;
+      line-height: 1.75;
+    }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+    }
+    .compare-col { padding: 32px; background: #fff; }
+    .compare-col + .compare-col { border-left: 1px solid var(--line); background: color-mix(in srgb, var(--case) 4%, #fff); }
+    .compare-col h4 { margin: 0 0 28px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .compare-row { display: grid; grid-template-columns: 14px 1fr; gap: 12px; padding: 15px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .compare-row i { width: 7px; height: 7px; margin-top: 5px; border: 1px solid var(--case); border-radius: 50%; }
+
+    .chart-shell {
+      padding: 34px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: #fff;
+    }
+    .chart-title { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 30px; }
+    .chart-title strong { font-size: 13px; letter-spacing: -.01em; }
+    .chart-title span { color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    .scope-funnel { display: grid; place-items: center; gap: 10px; padding: 12px 0; }
+    .funnel-row {
+      width: var(--w);
+      padding: 15px 20px;
+      color: color-mix(in srgb, var(--case) 76%, #111);
+      border: 1px solid color-mix(in srgb, var(--case) 32%, #ddd);
+      background: color-mix(in srgb, var(--case) var(--tint), #fff);
+      clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
+      font-size: 11px;
+      text-align: center;
+    }
+    .question-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .question {
+      min-height: 110px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      background: #fff;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+    .question b { display: block; margin-bottom: 16px; color: var(--case); font-size: 9px; letter-spacing: .13em; }
+    .ia-map { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .ia-col {
+      position: relative;
+      min-height: 270px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--case);
+      background: #fff;
+    }
+    .ia-col::after {
+      position: absolute;
+      top: 50px;
+      right: -15px;
+      z-index: 3;
+      width: 15px;
+      height: 1px;
+      content: "";
+      background: var(--case);
+    }
+    .ia-col:last-child::after { display: none; }
+    .ia-col h4 { margin: 0 0 18px; font-size: 15px; }
+    .ia-col p { margin: 0 0 18px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .ia-col span { display: block; padding: 9px 0; color: var(--muted); border-top: 1px solid var(--line); font-size: 9px; line-height: 1.5; }
+    .bar-chart { display: grid; gap: 16px; }
+    .bar-row { display: grid; grid-template-columns: 150px 1fr 56px; gap: 15px; align-items: center; }
+    .bar-row span, .bar-row b { font-size: 10px; }
+    .bar-row span { color: var(--muted); }
+    .bar-row b { color: var(--case); text-align: right; }
+    .bar-track { height: 7px; overflow: hidden; border-radius: 99px; background: #eef0f4; }
+    .bar-fill { width: var(--value); height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--case), var(--case2)); }
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(var(--count, 4),1fr);
+      gap: 16px;
+      padding-top: 25px;
+    }
+    .timeline::before { position: absolute; top: 35px; left: 4%; width: 92%; height: 1px; content: ""; background: linear-gradient(90deg, var(--case), var(--case2)); }
+    .time-point { position: relative; z-index: 2; padding-top: 35px; color: var(--muted); font-size: 9px; line-height: 1.65; }
+    .time-point::before {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: var(--case);
+      box-shadow: 0 0 0 1px var(--case);
+      content: "";
+    }
+    .time-point b { display: block; margin-bottom: 8px; color: var(--ink); font-size: 11px; }
+    .priority-map {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #fff;
+    }
+    .priority {
+      min-height: 190px;
+      padding: 28px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(145deg, color-mix(in srgb, var(--case) 5%, #fff), #fff);
+    }
+    .priority:nth-child(2n) { border-right: 0; }
+    .priority:nth-last-child(-n+2) { border-bottom: 0; }
+    .priority b { display: block; margin: 30px 0 10px; font-size: 16px; }
+    .priority span { color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .priority i { color: var(--case); font-size: 9px; font-style: normal; letter-spacing: .12em; }
+    .heatmap { display: grid; grid-template-columns: 120px repeat(5,1fr); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+    .heatmap > div { min-height: 54px; display: grid; place-items: center; padding: 8px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 9px; text-align: center; }
+    .heatmap > div:nth-child(6n) { border-right: 0; }
+    .heatmap .head { color: var(--ink); background: #f8f9fb; font-weight: 700; }
+    .heatmap .hot { color: var(--case); background: color-mix(in srgb, var(--case) 12%, #fff); font-weight: 700; }
+    .heatmap .warm { background: color-mix(in srgb, var(--case) 6%, #fff); }
+    .pattern-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .pattern {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
+    }
+    .pattern-top { display: flex; gap: 5px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .pattern-top i { width: 5px; height: 5px; border-radius: 50%; background: var(--case); opacity: .55; }
+    .pattern h4 { margin: 0 0 7px; font-size: 13px; }
+    .pattern p { min-height: 48px; margin: 0 0 18px; color: var(--muted); font-size: 9px; line-height: 1.6; }
+    .pattern-line { height: 7px; margin: 8px 0; border-radius: 99px; background: color-mix(in srgb, var(--case) 11%, #eef0f4); }
+    .pattern-line.short { width: 56%; }
+    .governance-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    .governance {
+      min-height: 230px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 50% 50% 20px 20px / 32% 32% 20px 20px;
+      background: #fff;
+      text-align: center;
+    }
+    .governance i { display: grid; place-items: center; width: 48px; height: 48px; margin: 6px auto 34px; color: var(--case); border: 1px solid var(--case); border-radius: 50%; font-size: 10px; font-style: normal; }
+    .governance b { display: block; margin-bottom: 9px; font-size: 12px; }
+    .governance span { color: var(--muted); font-size: 9px; line-height: 1.65; }
+    .swimlane { overflow-x: auto; border: 1px solid var(--line); border-radius: 22px; background: #fff; }
+    .lane { display: grid; grid-template-columns: 120px repeat(6,1fr); min-width: 900px; border-bottom: 1px solid var(--line); }
+    .lane:last-child { border-bottom: 0; }
+    .lane > span { min-height: 58px; display: grid; place-items: center; padding: 8px; border-right: 1px solid var(--line); color: var(--muted); font-size: 9px; text-align: center; }
+    .lane > span:last-child { border-right: 0; }
+    .lane .lane-name { color: var(--ink); background: #f8f9fb; font-weight: 700; }
+    .lane .active { color: var(--case); background: color-mix(in srgb, var(--case) 8%, #fff); font-weight: 700; }
+    .triad { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .triad-item {
+      position: relative;
+      min-height: 260px;
+      padding: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 50% 50% 24px 24px / 44% 44% 24px 24px;
+      background: #fff;
+      text-align: center;
+    }
+    .triad-item::before { display: block; width: 70px; height: 70px; margin: 0 auto 34px; border: 1px solid var(--case); border-radius: 50%; content: ""; background: radial-gradient(circle, color-mix(in srgb, var(--case) 18%, #fff), #fff 65%); }
+    .triad-item h4 { margin: 0 0 10px; font-size: 16px; }
+    .triad-item p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .spectrum { display: grid; gap: 13px; }
+    .spectrum-row { display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: center; }
+    .spectrum-row span { color: var(--muted); font-size: 10px; }
+    .spectrum-cells { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; }
+    .spectrum-cells i { height: 22px; border: 1px solid var(--line); border-radius: 5px; background: #f6f7f9; }
+    .spectrum-cells i.on { border-color: color-mix(in srgb, var(--case) 30%, #ddd); background: linear-gradient(90deg, color-mix(in srgb, var(--case) 25%, #fff), color-mix(in srgb, var(--case2) 22%, #fff)); }
+    .output-list { display: grid; grid-template-columns: repeat(7,1fr); gap: 8px; }
+    .output-list span { min-height: 90px; display: grid; place-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); background: #fff; font-size: 9px; line-height: 1.5; text-align: center; }
+
+    .project-intro {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: -52px 0 72px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: color-mix(in srgb, var(--case) 3%, #fff);
+    }
+    .intro-item { padding: 20px; border-left: 1px solid var(--line); }
+    .intro-item:first-child { border-left: 0; }
+    .intro-item b { display: block; margin: 18px 0 10px; font-size: 18px; letter-spacing: -.025em; }
+    .intro-item p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    .case-ai .project-intro {
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+    .case-ai .intro-item {
+      position: relative;
+      padding: 28px;
+      overflow: hidden;
+      border: 0;
+      border-radius: 22px;
+      background: color-mix(in srgb, #fff 10%, #080b16);
+      transform: translateY(0);
+      transition: color .3s ease, background .3s ease, box-shadow .3s ease, transform .3s ease;
+    }
+    .case-ai .intro-item .mini-label,
+    .case-ai .intro-item b,
+    .case-ai .intro-item p {
+      transition: color .3s ease, font-size .3s ease, transform .3s ease;
+      transform-origin: left center;
+    }
+    .case-ai .intro-item:is(:hover,:focus-within) {
+      color: #101010;
+      background: #ffe500;
+      box-shadow: 0 24px 58px rgba(255,229,0,.2);
+      transform: translateY(-7px);
+    }
+    .case-ai .intro-item:is(:hover,:focus-within) .mini-label,
+    .case-ai .intro-item:is(:hover,:focus-within) b,
+    .case-ai .intro-item:is(:hover,:focus-within) p {
+      color: #101010;
+      transform: scale(1.08);
+    }
+    .image-placeholder {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 430px;
+      margin: 42px 0 110px;
+      overflow: hidden;
+      color: var(--muted);
+      border: 1px dashed color-mix(in srgb, var(--case) 40%, var(--line));
+      border-radius: 28px;
+      background:
+        linear-gradient(rgba(90,100,130,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(90,100,130,.045) 1px, transparent 1px),
+        color-mix(in srgb, var(--case) 2%, #fff);
+      background-size: 32px 32px;
+    }
+    .image-placeholder::before, .image-placeholder::after {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      border: 1px solid color-mix(in srgb, var(--case) 22%, transparent);
+      border-radius: 50%;
+      content: "";
+      transform: translate(-50%, -50%);
+    }
+    .image-placeholder::before { width: 250px; height: 250px; }
+    .image-placeholder::after { width: 370px; height: 370px; }
+    .image-placeholder figcaption { position: relative; z-index: 2; padding: 20px; text-align: center; }
+    .image-placeholder strong { display: block; margin-bottom: 10px; color: var(--case); font-size: 18px; }
+    .image-placeholder span { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+    .image-placeholder img { position: absolute; z-index: 3; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    /* Case01 Integration Preview: preserve the source layout while showing approved snapshots. */
+    .case-ai .case01-preview-visual { width: 100%; margin: 0; }
+    .case-ai .case01-preview-visual img { display: block; width: 100%; height: auto; max-width: 100%; object-fit: contain; }
+    .case-ai .case01-preview-visual--hero { margin-bottom: 72px; }
+    .case-ai [data-integration-preview="scope"] > .grid-2,
+    .case-ai [data-integration-preview="workflow"] > .diagram,
+    .case-ai [data-integration-preview="ia"] > .ia-map,
+    .case-ai [data-integration-preview="key-design"] > .grid-3,
+    .case-ai [data-integration-preview="validation"] > .heatmap,
+    .case-ai [data-integration-preview="validation"] > .grid-3,
+    .case-ai [data-integration-preview="validation"] > .output-list { display: none; }
+
+    /* Readability scale: body copy is intentionally larger than the first draft. */
+    .hero-copy, .section-intro, .case-lead { font-size: 20px; line-height: 1.85; }
+    .copy { font-size: 18px; line-height: 1.85; }
+    .line-card p, .compare-row, .system-layer span, .work p, .bubble, .question { font-size: 16px; line-height: 1.75; }
+    .flow-step span, .ia-col span, .bar-row span, .bar-row b, .time-point, .heatmap > div,
+    .pattern p, .governance span, .lane > span, .output-list span { font-size: 13px; line-height: 1.65; }
+    .ia-col p, .priority span, .triad-item p, .spectrum-row span, .metric span { font-size: 15px; line-height: 1.7; }
+    .chart-title strong { font-size: 26px; letter-spacing: -.025em; }
+    .compare-col h4 { font-size: 24px; letter-spacing: .04em; }
+    .ia-col h4 { font-size: 21px; }
+    .pattern h4, .priority b, .triad-item h4 { font-size: 20px; }
+    .governance b { font-size: 18px; }
+
+    .case-ai { --case: #7658ff; --case2: #25c8f0; }
+    .case-employee { --case: #2578ee; --case2: #21d3bf; background: #fbfdff; }
+    .case-system { --case: #315be9; --case2: #d95cff; }
+    .case-medical { --case: #0d9e8b; --case2: #48c886; background: #fbfffd; }
+    .case-selected { --case: #ed5a9e; --case2: #ff9f4f; }
+    .dark-case {
+      --ink: #f3f5fb;
+      --muted: #a8b0c1;
+      --line: rgba(255,255,255,.14);
+      color: var(--ink);
+      background: #080b16;
+    }
+    .dark-case.case-system { background: #0a0c17; }
+    .dark-case .project-intro,
+    .dark-case .meta,
+    .dark-case .line-card,
+    .dark-case .chart-shell,
+    .dark-case .question,
+    .dark-case .compare-col,
+    .dark-case .diagram,
+    .dark-case .ia-col,
+    .dark-case .priority,
+    .dark-case .pattern,
+    .dark-case .orbit,
+    .dark-case .system-layer,
+    .dark-case .governance,
+    .dark-case .swimlane,
+    .dark-case .chat-ui,
+    .dark-case .output-list span {
+      color: var(--ink);
+      background: rgba(255,255,255,.045);
+      border-color: var(--line);
+    }
+    .dark-case.case-ai .project-intro { background: transparent; border-color: transparent; }
+    .dark-case.case-ai .intro-item { background: color-mix(in srgb, #fff 10%, #080b16); }
+    .dark-case.case-ai .intro-item:is(:hover,:focus-within) { color: #101010; background: #ffe500; }
+    .dark-case.case-ai .intro-item:is(:hover,:focus-within) .mini-label,
+    .dark-case.case-ai .intro-item:is(:hover,:focus-within) b,
+    .dark-case.case-ai .intro-item:is(:hover,:focus-within) p { color: #101010; }
+    .case-ai .scope-definition .chart-shell,
+    .case-ai .scope-definition .question {
+      position: relative;
+      overflow: hidden;
+      transform-origin: center;
+      transition: color .3s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+    }
+    .case-ai .scope-definition .chart-shell > *,
+    .case-ai .scope-definition .question > * {
+      transition: color .3s ease, background .3s ease, border-color .3s ease, transform .3s ease;
+    }
+    .case-ai .scope-definition .chart-shell:hover,
+    .case-ai .scope-definition .question:hover {
+      z-index: 2;
+      color: #fff;
+      border-color: #ee168c;
+      background: #ee168c;
+      box-shadow: 0 18px 42px rgba(238,22,140,.28);
+      transform: scale(1.06);
+    }
+    .case-ai .scope-definition .chart-shell:hover .chart-title span,
+    .case-ai .scope-definition .question:hover b {
+      color: #fff;
+    }
+    .case-ai .scope-definition .chart-shell:hover .funnel-row {
+      color: #fff;
+      border-color: rgba(255,255,255,.28);
+      background: rgba(255,255,255,.12);
+      transform: scale(1.03);
+    }
+    .case-ai .scope-definition .question:hover > * {
+      transform: scale(1.05);
+    }
+    .dark-case .compare-col + .compare-col,
+    .dark-case .priority,
+    .dark-case .image-placeholder {
+      background-color: rgba(255,255,255,.035);
+    }
+    .dark-case .flow-step,
+    .dark-case .orbit-node,
+    .dark-case .funnel-row {
+      color: var(--ink);
+      background: rgba(255,255,255,.055);
+      border-color: color-mix(in srgb, var(--case) 40%, var(--line));
+    }
+    .dark-case .quote { color: color-mix(in srgb, var(--case) 72%, #fff); background: color-mix(in srgb, var(--case) 12%, #0b0f1d); }
+    .dark-case .bubble { color: var(--muted); background: rgba(255,255,255,.07); }
+    .dark-case .bubble.user { color: #fff; background: linear-gradient(135deg, var(--case), var(--case2)); }
+    .dark-case .bar-track, .dark-case .pattern-line { background: rgba(255,255,255,.1); }
+    .dark-case .heatmap { border-color: var(--line); }
+    .dark-case .heatmap > div, .dark-case .lane > span { border-color: var(--line); }
+    .dark-case .heatmap .head, .dark-case .lane .lane-name { color: var(--ink); background: rgba(255,255,255,.07); }
+    .dark-case .heatmap .hot, .dark-case .heatmap .warm, .dark-case .lane .active { background: color-mix(in srgb, var(--case) 16%, #111522); }
+    .dark-case .time-point::before { border-color: #080b16; }
+    .dark-case .image-placeholder {
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        rgba(255,255,255,.025);
+      background-size: 32px 32px;
+    }
+
+    .system-layers { display: grid; gap: 12px; }
+    .system-layer {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      align-items: center;
+      min-height: 94px;
+      padding: 18px 24px;
+      border: 1px solid var(--line);
+      border-left: 2px solid var(--color);
+      background: #fff;
+    }
+    .system-layer b { color: var(--color); font-size: 13px; }
+    .system-layer span { color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .orbit {
+      position: relative;
+      min-height: 460px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: #fff;
+    }
+    .orbit::before, .orbit::after {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      border: 1px dashed color-mix(in srgb, var(--case) 30%, #ddd);
+      border-radius: 50%;
+      content: "";
+      transform: translate(-50%,-50%);
+    }
+    .orbit::before { width: 330px; height: 330px; }
+    .orbit::after { width: 210px; height: 210px; }
+    .orbit-center {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      display: grid;
+      place-items: center;
+      width: 118px;
+      height: 118px;
+      color: #fff;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--case), var(--case2));
+      transform: translate(-50%,-50%);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .orbit-node {
+      position: absolute;
+      z-index: 3;
+      width: 135px;
+      padding: 12px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(30,40,70,.07);
+      font-size: 10px;
+      text-align: center;
+    }
+    .o1 { top: 36px; left: 50%; transform: translateX(-50%); }
+    .o2 { top: 50%; right: 52px; transform: translateY(-50%); }
+    .o3 { bottom: 36px; left: 50%; transform: translateX(-50%); }
+    .o4 { top: 50%; left: 52px; transform: translateY(-50%); }
+
+    .chat-ui {
+      max-width: 660px;
+      margin: auto;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 24px 70px rgba(20,110,90,.1);
+    }
+    .chat-top { display: flex; align-items: center; gap: 8px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .chat-top i { width: 7px; height: 7px; border-radius: 50%; background: var(--case); }
+    .bubble { max-width: 78%; margin: 18px 0; padding: 14px 16px; border-radius: 15px; color: var(--muted); background: var(--soft); font-size: 11px; line-height: 1.65; }
+    .bubble.user { margin-left: auto; color: #fff; background: linear-gradient(135deg, var(--case), var(--case2)); }
+    .chat-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chat-actions span { padding: 8px 11px; color: var(--case); border: 1px solid color-mix(in srgb, var(--case) 34%, #ddd); border-radius: 999px; font-size: 9px; }
+
+    .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .work {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      padding: 28px;
+      color: #fff;
+      border-radius: 26px;
+      background: var(--work-bg);
+    }
+    .work:nth-child(1), .work:nth-child(4) { grid-column: span 7; }
+    .work:nth-child(2), .work:nth-child(3) { grid-column: span 5; }
+    .work:nth-child(5) { grid-column: span 12; min-height: 250px; }
+    .work::before {
+      position: absolute;
+      inset: auto -40px -110px auto;
+      width: 290px;
+      height: 290px;
+      border: 1px solid rgba(255,255,255,.27);
+      border-radius: 50%;
+      content: "";
+    }
+    .work::after {
+      position: absolute;
+      top: 55%;
+      left: -20%;
+      width: 140%;
+      height: 1px;
+      content: "";
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: rotate(-14deg);
+    }
+    .work-tag { font-size: 9px; letter-spacing: .14em; opacity: .65; text-transform: uppercase; }
+    .work h3 { position: relative; z-index: 2; max-width: 380px; margin: 190px 0 12px; font-size: 28px; letter-spacing: -.04em; }
+    .work:nth-child(5) h3 { margin-top: 80px; }
+    .work p { position: relative; z-index: 2; max-width: 420px; margin: 0; font-size: 11px; line-height: 1.7; opacity: .72; }
+    .work-glyph {
+      position: absolute;
+      top: 32px;
+      right: 34px;
+      font-size: 110px;
+      font-weight: 800;
+      letter-spacing: -.1em;
+      opacity: .12;
+    }
+
+    .research {
+      position: relative;
+      overflow: hidden;
+      padding: 160px 0;
+      color: #fff;
+      background:
+        radial-gradient(circle at 75% 40%, rgba(90,74,255,.3), transparent 26%),
+        radial-gradient(circle at 22% 70%, rgba(18,207,208,.18), transparent 28%),
+        var(--dark);
+    }
+    .research::before {
+      position: absolute;
+      inset: 0;
+      opacity: .25;
+      background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 58px 58px;
+      content: "";
+      mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+    }
+    .research-inner { position: relative; z-index: 2; }
+    .research .display-title { background-image: linear-gradient(115deg, #fff, #8bdfff, #9c8bff); }
+    .research .section-intro { color: rgba(255,255,255,.52); }
+    .placeholder-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 70px; }
+    .placeholder {
+      min-height: 230px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      background: rgba(255,255,255,.035);
+    }
+    .placeholder i { display: block; width: 30px; height: 30px; margin-bottom: 100px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; }
+    .placeholder strong { display: block; margin-bottom: 8px; font-size: 13px; }
+    .placeholder span { color: rgba(255,255,255,.4); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+
+    .contact { padding: 170px 0 50px; background: #fff; }
+    .contact-title {
+      max-width: 1000px;
+      margin: 0;
+      font-size: clamp(64px, 11vw, 150px);
+      font-weight: 820;
+      letter-spacing: -.08em;
+      line-height: .88;
+    }
+    .contact-title span {
+      color: transparent;
+      background: linear-gradient(115deg, var(--blue), var(--violet), var(--pink), var(--orange));
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 90px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+    .contact-item { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .contact-item strong { display: block; margin-top: 12px; font-size: 18px; letter-spacing: -.02em; }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 120px;
+      padding-top: 24px;
+      color: #9aa0ac;
+      border-top: 1px solid var(--line);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1000px) {
+      .nav-links { display: none; }
+      .hero-bottom, .section-head, .profile-grid, .case-top, .block-head, .contact-row { grid-template-columns: 1fr; }
+      .profile .section-head { grid-template-columns: 1fr; }
+      .hero-bottom { gap: 40px; margin-top: 54px; }
+      .signal strong { font-size: 76px; }
+      .signal span { font-size: 15px; }
+      .portrait { position: relative; top: auto; min-height: 420px; }
+      .grid-4 { grid-template-columns: repeat(2,1fr); }
+      .flow { grid-template-columns: repeat(3,1fr); }
+      .flow-step:nth-child(3)::after { display: none; }
+      .map { min-height: auto; padding: 42px; }
+      .map-lines, .map-core { display: none; }
+      .map-node { position: relative; inset: auto; width: 100%; margin: 8px 0; transform: none; }
+      .map-node:is(:hover,:focus-visible) { width: 100%; transform: scale(1.015); }
+      .case-top { gap: 48px; }
+      .governance-grid { grid-template-columns: repeat(2,1fr); }
+      .output-list { grid-template-columns: repeat(4,1fr); }
+      .project-intro { margin-top: -25px; }
+    }
+    @media (max-width: 700px) {
+      .nav { top: 10px; }
+      .nav-contact { display: none; }
+      .hero-inner { padding: 120px 0 210px; }
+      .hero h1 { font-size: 76px; }
+      .hero-bottom { margin-top: 42px; }
+      .signal-row { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .signal strong { margin-bottom: 9px; font-size: 50px; }
+      .signal span { font-size: 11px; }
+      .hero-description { bottom: 24px; gap: 10px; }
+      .hero-description .hero-copy { font-size: 14px; line-height: 1.65; }
+      .grid-2, .grid-3, .grid-4, .case-meta, .placeholder-grid { grid-template-columns: 1fr; }
+      .section, .case, .research { padding: 100px 0; }
+      .section-head { gap: 26px; margin-bottom: 50px; }
+      .profile .section-head { gap: 26px; }
+      .display-title, .case-title { font-size: 50px; }
+      .career-row { grid-template-columns: 1fr; }
+      .career-row span:last-child { text-align: left; }
+      .map { padding: 18px; border-radius: 24px; }
+      .rule { margin: 54px 0; }
+      .case-block { margin-top: 76px; }
+      .diagram { padding: 18px; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { display: none; }
+      .compare { grid-template-columns: 1fr; }
+      .compare-col + .compare-col { border-top: 1px solid var(--line); border-left: 0; }
+      .question-grid, .ia-map, .priority-map, .pattern-grid, .governance-grid, .triad { grid-template-columns: 1fr; }
+      .project-intro { grid-template-columns: 1fr; margin: -20px 0 48px; padding: 12px; }
+      .intro-item { border-top: 1px solid var(--line); border-left: 0; }
+      .intro-item:first-child { border-top: 0; }
+      .image-placeholder { min-height: 240px; margin: 30px 0 76px; }
+      .image-placeholder::before { width: 140px; height: 140px; }
+      .image-placeholder::after { width: 220px; height: 220px; }
+      .ia-col::after { display: none; }
+      .priority { border-right: 0; border-bottom: 1px solid var(--line); }
+      .priority:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .priority:last-child { border-bottom: 0; }
+      .bar-row, .spectrum-row { grid-template-columns: 1fr; gap: 7px; }
+      .bar-row b { text-align: left; }
+      .timeline { grid-template-columns: 1fr; padding-left: 20px; }
+      .timeline::before { top: 0; left: 7px; width: 1px; height: 100%; }
+      .time-point { padding: 0 0 25px 28px; }
+      .time-point::before { top: 0; left: -20px; }
+      .heatmap { grid-template-columns: 82px repeat(5, minmax(72px,1fr)); overflow-x: auto; }
+      .chart-shell { padding: 20px; }
+      .output-list { grid-template-columns: repeat(2,1fr); }
+      .system-layer { grid-template-columns: 1fr; gap: 8px; }
+      .orbit { min-height: 620px; }
+      .o1 { top: 32px; }
+      .o2 { top: 155px; right: 50%; transform: translateX(50%); }
+      .o3 { bottom: 155px; }
+      .o4 { top: auto; bottom: 32px; left: 50%; transform: translateX(-50%); }
+      .work-grid { grid-template-columns: 1fr; }
+      .work:nth-child(n) { grid-column: auto; min-height: 340px; }
+      .work:nth-child(n) h3 { margin-top: 165px; }
+      .contact-title { font-size: 62px; }
+      .footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .map-node, .node-copy, .node-orb, .map-core, .map-core::before, .core-default, .core-project { transition-duration: .01ms; }
+      .map:has(.map-node:is(:hover,:focus-visible)) .beam { animation: none; opacity: .3; stroke-dashoffset: 0; }
+    }
+
+    /* V1 Case02–05 image integration only */
+    :is(#case02,#case03,#case04,#case05) .integration-preview-visual { width:100%; margin:0; position:relative; z-index:2; }
+    :is(#case02,#case03,#case04,#case05) .integration-preview-visual img { display:block; width:100%; height:auto; max-width:100%; object-fit:contain; }
+    :is(#case02,#case03,#case04) .integration-preview-visual--hero { margin-bottom:72px; }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <nav class="nav" id="nav">
+    <a class="nav-brand" href="#top">RONG MIN.</a>
+    <div class="nav-links">
+      <a href="#profile">Profile</a>
+      <a href="#case01">Cases</a>
+      <a href="#research">AI Research</a>
+    </div>
+    <a class="nav-contact" href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero" id="top">
+    <canvas id="starfield" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div>
+        <p class="hero-kicker">Senior Experience Designer · Portfolio 2026</p>
+        <h1>荣敏<span>Rong Min</span></h1>
+        <div class="hero-bottom">
+          <div>
+            <h2 class="hero-title">用系统化设计，让复杂变得清晰。</h2>
+          </div>
+          <div class="signal-row">
+            <div class="signal" data-star-digit="9" tabindex="0"><strong>9+</strong><span>Years in design</span></div>
+            <div class="signal" data-star-digit="7" tabindex="0"><strong>7+</strong><span>Years UX / ToB / ToC</span></div>
+            <div class="signal" data-star-digit="5" tabindex="0"><strong>05</strong><span>Cases</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-description">
+      <p class="hero-copy">9+ 年设计经历，专注 AI 产品体验、复杂企业系统与设计系统建设。连接用户、业务和技术，把抽象问题转化为可执行、可验证、可持续的产品体验。</p>
+      <a class="hero-down" href="#profile" aria-label="向下浏览个人介绍"></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section profile" id="profile">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-no">00 / Profile</span>
+            <h2 class="display-title">设计复杂系统，<br>也设计协作方式。</h2>
+          </div>
+          <p class="section-intro">从蘑菇街、凯唱软件到蔚来汽车，持续参与 ToC 产品、复杂 B 端系统与组织级设计能力建设。关注的不只是界面结果，更包括产品方向、流程效率与长期复用价值。</p>
+        </div>
+        <div class="profile-grid">
+          <div class="portrait reveal">
+            <div class="portrait-monogram">RM</div>
+            <div class="portrait-content">
+              <p class="portrait-name">荣敏</p>
+              <p class="portrait-role">SENIOR EXPERIENCE DESIGNER</p>
+            </div>
+          </div>
+          <div class="profile-copy reveal">
+            <p class="eyebrow">About me</p>
+            <h3 class="big-copy">在模糊中定义方向，<br>在复杂中建立秩序。</h3>
+            <p class="copy"><strong>本科，30 岁。拥有 9+ 年设计经历与 7+ 年 ToB / ToC 交互设计经验。</strong><br>擅长将复杂业务、多人协作与技术约束整理为清晰体验，并通过研究、原型、设计系统和数据验证推动方案落地。</p>
+            <div>
+              <div class="achievement"><strong>2025</strong><span>年度卓越员工</span></div>
+              <div class="achievement"><strong>2024</strong><span>年度卓越员工</span></div>
+              <div class="achievement"><strong>2023</strong><span>获“持续创新设计奖”</span></div>
+              <div class="achievement"><strong>2022</strong><span>部门唯一入职半年即晋升</span></div>
+            </div>
+            <div class="career">
+              <p class="eyebrow">Experience</p>
+              <div class="career-row"><strong class="career-company"><span class="company-icon" data-fallback="NIO"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/NIO_logo.svg" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>蔚来汽车</strong><span>高级体验设计师</span><span>Enterprise UX</span></div>
+              <div class="career-row"><strong class="career-company"><span class="company-icon company-icon-kc" data-fallback="KC"></span>凯唱软件</strong><span>高级 UX 设计师</span><span>Product UX</span></div>
+              <div class="career-row"><strong class="career-company"><span class="company-icon" data-fallback="MOGU"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mogu-inc_logo.png" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>蘑菇街</strong><span>UED 设计师</span><span>Consumer UX</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section capability" id="capability">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-no">01 / Capability Map</span>
+            <h2 class="display-title">五个案例，<br>完整能力图谱</h2>
+          </div>
+          <p class="section-intro">每个项目回答一种不同尺度的体验问题：从 AI 产品方向、复杂任务系统，到设计资产治理与多角色服务流程，最终共同形成系统化的设计能力。</p>
+        </div>
+        <div class="map reveal">
+          <svg class="map-lines" viewBox="0 0 1200 720" preserveAspectRatio="none" aria-hidden="true">
+            <circle cx="600" cy="360" r="245"></circle>
+            <circle cx="600" cy="360" r="165"></circle>
+            <line class="connector connector-n1" x1="600" y1="100" x2="600" y2="360"></line>
+            <line class="connector connector-n2" x1="1035" y1="285" x2="600" y2="360"></line>
+            <line class="connector connector-n3" x1="830" y1="625" x2="600" y2="360"></line>
+            <line class="connector connector-n4" x1="370" y1="625" x2="600" y2="360"></line>
+            <line class="connector connector-n5" x1="165" y1="285" x2="600" y2="360"></line>
+            <line class="beam beam-n1" style="--beam:#f04438" pathLength="1" x1="600" y1="100" x2="600" y2="360"></line>
+            <line class="beam beam-n2" style="--beam:#2878ff" pathLength="1" x1="1035" y1="285" x2="600" y2="360"></line>
+            <line class="beam beam-n3" style="--beam:#795cff" pathLength="1" x1="830" y1="625" x2="600" y2="360"></line>
+            <line class="beam beam-n4" style="--beam:#18a66a" pathLength="1" x1="370" y1="625" x2="600" y2="360"></line>
+            <line class="beam beam-n5" style="--beam:#121318" pathLength="1" x1="165" y1="285" x2="600" y2="360"></line>
+          </svg>
+          <div class="map-core">
+            <div class="core-default"><strong>系统化<br>体验设计</strong><span>Strategy · UX · System</span></div>
+            <div class="core-project core-project-n1">RYZE AI</div>
+            <div class="core-project core-project-n2">员工体验系统</div>
+            <div class="core-project core-project-n3">Dig Design</div>
+            <div class="core-project core-project-n4">森罗树</div>
+            <div class="core-project core-project-n5">多类型项目</div>
+          </div>
+          <a class="map-node n1" href="#case01"><i class="node-orb" aria-hidden="true"><b>AI</b></i><span class="node-copy"><strong>RYZE AI</strong><span>AI 产品策略与人机协作</span></span></a>
+          <a class="map-node n2" href="#case02"><i class="node-orb" aria-hidden="true"><b>OA</b></i><span class="node-copy"><strong>员工体验系统</strong><span>复杂企业系统与服务体验</span></span></a>
+          <a class="map-node n3" href="#case03"><i class="node-orb" aria-hidden="true"><b>DS</b></i><span class="node-copy"><strong>Dig Design</strong><span>设计系统与组织协作</span></span></a>
+          <a class="map-node n4" href="#case04"><i class="node-orb" aria-hidden="true"><b>MED</b></i><span class="node-copy"><strong>森罗树</strong><span>多角色 B 端流程设计</span></span></a>
+          <a class="map-node n5" href="#case05"><i class="node-orb" aria-hidden="true"><b>VIS</b></i><span class="node-copy"><strong>多类型项目</strong><span>ToC、移动端、品牌与视觉</span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="case case-ai dark-case" id="case01">
+      <div class="wrap">
+        <div class="case-top reveal">
+          <div>
+            <p class="case-index">Case 01 · AI Product Experience</p>
+            <h2 class="case-title">AI Courseware<br>Studio</h2>
+            <p class="case-lead">英国航校机师培训系统智能化</p>
+          </div>
+          <div class="case-meta">
+            <div class="meta"><span class="mini-label">Role</span><strong>Product Owner<br>/ UX Designer</strong></div>
+            <div class="meta"><span class="mini-label">Timeline</span><strong>127 Days</strong></div>
+            <div class="meta"><span class="mini-label">Team</span><strong>6 Members</strong></div>
+            <div class="meta"><span class="mini-label">Market</span><strong>UK · Europe<br>North America</strong></div>
+          </div>
+        </div>
+
+        <div class="project-intro reveal">
+          <div class="intro-item"><span class="mini-label">项目是什么</span><b>AI 课件生产工作室</b><p>面向海外教育者、培训团队与独立课程创作者，将文本和既有材料转化为结构化课程、演示文稿与视频。</p></div>
+          <div class="intro-item"><span class="mini-label">遇到什么问题</span><b>生成很快，但难以信任</b><p>早期 AI 构想范围模糊，自动生成结果缺乏教学结构、编辑控制与可复用的生产流程。</p></div>
+          <div class="intro-item"><span class="mini-label">做了什么</span><b>定义可控的 MVP</b><p>收敛产品范围，建立结构优先的人机协作工作流、信息架构、关键交互和场景验证方案。</p></div>
+        </div>
+
+        <div class="grid-3 reveal">
+          <div class="metric"><strong>12.4m</strong><span>典型课件生成流程的场景测试完成时间</span></div>
+          <div class="metric"><strong>3</strong><span>主题、上传材料与现有课程三种创建入口</span></div>
+          <div class="metric"><strong>1</strong><span>聚焦“文本 → 演示文稿 → 视频”的 MVP 工作流</span></div>
+        </div>
+
+        <div class="case-block scope-definition reveal">
+          <div class="block-head">
+            <p class="eyebrow">Scope Definition</p>
+            <h3>从宽泛的 AI 想法，逐步收敛为可以执行的 MVP。</h3>
+          </div>
+          <div class="grid-2">
+            <div class="chart-shell">
+              <div class="chart-title"><strong>范围收敛漏斗</strong><span>Broad idea → MVP</span></div>
+              <div class="scope-funnel">
+                <div class="funnel-row" style="--w:100%;--tint:4%">AI 增强课程创作的宽泛商业构想</div>
+                <div class="funnel-row" style="--w:86%;--tint:6%">AI 生成 · 内容导入 · 课程编辑 · 发布分发</div>
+                <div class="funnel-row" style="--w:70%;--tint:9%">高频、低风险、可被用户控制的辅助任务</div>
+                <div class="funnel-row" style="--w:54%;--tint:13%">文本与材料输入 → 大纲 → 可编辑幻灯片</div>
+                <div class="funnel-row" style="--w:38%;--tint:18%">音视频配置与多格式导出</div>
+              </div>
+            </div>
+            <div class="question-grid">
+              <div class="question"><b>PRODUCT QUESTION 01</b>AI 首先应该支持哪些课程创作任务？</div>
+              <div class="question"><b>PRODUCT QUESTION 02</b>哪些用户场景具有最高商业潜力？</div>
+              <div class="question"><b>PRODUCT QUESTION 03</b>首个版本应该包含什么，又应该推迟什么？</div>
+              <div class="question"><b>PRODUCT QUESTION 04</b>如何避免产品变成能力很多却难以使用的 AI Demo？</div>
+            </div>
+          </div>
+          <div class="quote">长期愿景可以是自主 AI 课程引擎，但首个版本必须先证明一条低风险、可控制的真实生产流程。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Opportunity</p>
+            <h3>真正的机会不是再做一个 AI 生成器，而是建立用户能够信任的创作流程。</h3>
+          </div>
+          <div class="compare">
+            <div class="compare-col">
+              <h4>市场现状</h4>
+              <div class="compare-row"><i></i><span>传统课件工具能力强，但学习成本与生产周期高</span></div>
+              <div class="compare-row"><i></i><span>AI 生成工具速度快，但输出不稳定、缺少教学结构</span></div>
+              <div class="compare-row"><i></i><span>通用内容工具表达丰富，但不支持系统化课程生产</span></div>
+            </div>
+            <div class="compare-col">
+              <h4>设计机会</h4>
+              <div class="compare-row"><i></i><span>先生成结构，再扩展完整内容</span></div>
+              <div class="compare-row"><i></i><span>所有 AI 输出都可以编辑、回退与重新生成</span></div>
+              <div class="compare-row"><i></i><span>在对象附近提供恰到好处的上下文 AI 能力</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">User Scenario</p>
+            <h3>为有教学经验、但缺少专业制作资源的课程创作者设计。</h3>
+          </div>
+          <div class="grid-2">
+            <div class="chart-shell">
+              <div class="chart-title"><strong>用户任务与阻力</strong><span>Jobs to be done</span></div>
+              <div class="bar-chart">
+                <div class="bar-row"><span>整理分散材料</span><div class="bar-track"><div class="bar-fill" style="--value:92%"></div></div><b>High</b></div>
+                <div class="bar-row"><span>建立课程结构</span><div class="bar-track"><div class="bar-fill" style="--value:88%"></div></div><b>High</b></div>
+                <div class="bar-row"><span>减少页面排版时间</span><div class="bar-track"><div class="bar-fill" style="--value:82%"></div></div><b>High</b></div>
+                <div class="bar-row"><span>生成脚本、声音和视频</span><div class="bar-track"><div class="bar-fill" style="--value:72%"></div></div><b>Medium</b></div>
+                <div class="bar-row"><span>保留个人教学风格</span><div class="bar-track"><div class="bar-fill" style="--value:84%"></div></div><b>High</b></div>
+                <div class="bar-row"><span>导出至 LMS 平台</span><div class="bar-track"><div class="bar-fill" style="--value:66%"></div></div><b>Medium</b></div>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="line-card"><span class="num">User Control First</span><h4>用户控制优先</h4><p>每个 AI 输出都应该可以编辑、回退和重新生成。</p></div>
+              <div class="line-card"><span class="num">Progressive Assistance</span><h4>渐进式辅助</h4><p>AI 在适当时机协助，而不是一次接管全部工作流。</p></div>
+              <div class="line-card"><span class="num">Reusable Structure</span><h4>结构可以复用</h4><p>大纲、版式、脚本和输出设置支持长期重复使用。</p></div>
+              <div class="line-card"><span class="num">Product Direction</span><h4>引导式生产空间</h4><p>产品不应像专业编辑套件，而应帮助用户快速开始、放心编辑。</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Human-AI Workflow</p>
+            <h3>让用户掌握目标、结构和判断，让 AI 支持生成、扩展与转换。</h3>
+          </div>
+          <div class="diagram">
+            <div class="flow">
+              <div class="flow-step"><i>01</i><b>开始</b><span>输入主题、上传材料或选择现有课程</span></div>
+              <div class="flow-step"><i>02</i><b>结构</b><span>AI 生成大纲，用户审核与确认</span></div>
+              <div class="flow-step"><i>03</i><b>创建</b><span>扩展为幻灯片、脚本与配套内容</span></div>
+              <div class="flow-step"><i>04</i><b>编辑</b><span>直接修改，AI 提供上下文建议</span></div>
+              <div class="flow-step"><i>05</i><b>配置</b><span>设置声音、视频、品牌与输出方式</span></div>
+              <div class="flow-step"><i>06</i><b>导出</b><span>生成演示文稿、视频或 LMS 材料</span></div>
+            </div>
+          </div>
+          <div class="quote">AI 产品设计的核心，不只是生成更多内容，而是让用户能够理解、控制、编辑和验证 AI 输出。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Information Architecture</p>
+            <h3>将结构、内容和输出分离，避免用户在一个工作区里同时管理所有复杂度。</h3>
+          </div>
+          <div class="ia-map">
+            <div class="ia-col"><h4>Creation Layer</h4><p>用已有材料快速开始，将模糊想法转化为可编辑课程草稿。</p><span>主题与 Prompt 输入</span><span>文档与大纲上传</span><span>现有课程导入</span><span>AI 辅助生成</span></div>
+            <div class="ia-col"><h4>Editing Layer</h4><p>围绕课程结构和内容直接编辑，AI 作为上下文能力存在。</p><span>课程大纲视图</span><span>幻灯片与内容画布</span><span>脚本与媒体内容</span><span>上下文 AI 工具</span></div>
+            <div class="ia-col"><h4>Output Layer</h4><p>让一套内容能够进入不同教学和分发场景。</p><span>演示文稿下载</span><span>声音与视频生成</span><span>品牌与格式配置</span><span>LMS 与社交分享</span></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Key Decisions</p>
+            <h3>低风险、局部化的 AI 辅助策略。</h3>
+          </div>
+          <div class="grid-4">
+            <div class="line-card"><span class="num">01</span><h4>常见材料开始</h4><p>支持主题、粘贴大纲和上传文档，降低首次启动门槛。</p></div>
+            <div class="line-card"><span class="num">02</span><h4>结构优先</h4><p>完整生成前先提供可编辑大纲，让用户先确认教学逻辑。</p></div>
+            <div class="line-card"><span class="num">03</span><h4>输出可编辑</h4><p>大纲、页面、脚本、声音与视频配置都保持可修改。</p></div>
+            <div class="line-card"><span class="num">04</span><h4>上下文 AI</h4><p>在适合的位置提供改写、总结和扩展，而不是让聊天接管流程。</p></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Key Design · Start & Edit</p>
+            <h3>用三种创建入口解决“如何开始”，用直接操作解决“如何控制”。</h3>
+          </div>
+          <div class="grid-3">
+            <div class="line-card"><span class="num">Entry 01</span><h4>Prompt-based Creation</h4><p>适合只有主题或课程想法的用户，输入目标、受众、时长与教学风格。</p></div>
+            <div class="line-card"><span class="num">Entry 02</span><h4>Upload Existing Materials</h4><p>上传 Word、PDF、课程笔记或大纲，AI 转换为结构化课程草稿。</p></div>
+            <div class="line-card"><span class="num">Entry 03</span><h4>Modify Existing Course</h4><p>更新、扩展或本地化已有课程，只重新生成选定内容。</p></div>
+            <div class="line-card"><span class="num">Edit 01</span><h4>Contextual AI Tools</h4><p>在段落、页面、图片、脚本或大纲附近提供相关 AI 操作。</p></div>
+            <div class="line-card"><span class="num">Edit 02</span><h4>Outline-first Editing</h4><p>直接编辑课程大纲，不必通过对话指令控制每一次结构修改。</p></div>
+            <div class="line-card"><span class="num">Edit 03</span><h4>Inline Prediction</h4><p>提供补全、改写和扩展建议，由用户接受、拒绝或继续修改。</p></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Scenario Validation & Impact</p>
+            <h3>用三类生产场景验证产品不是一次性 Demo，而是一条可复用工作流。</h3>
+          </div>
+          <div class="heatmap">
+            <div class="head">场景 / 能力</div><div class="head">材料输入</div><div class="head">结构编辑</div><div class="head">内容生成</div><div class="head">音视频</div><div class="head">复用导出</div>
+            <div class="head">独立课程创作者</div><div class="hot">核心</div><div class="hot">核心</div><div class="hot">核心</div><div class="hot">核心</div><div class="warm">需要</div>
+            <div class="head">企业培训团队</div><div class="hot">核心</div><div class="hot">核心</div><div class="warm">需要</div><div class="warm">需要</div><div class="hot">核心</div>
+            <div class="head">迭代式课程生产</div><div class="warm">需要</div><div class="hot">核心</div><div class="hot">核心</div><div class="warm">需要</div><div class="hot">核心</div>
+          </div>
+          <div class="grid-3" style="margin-top:18px">
+            <div class="line-card"><span class="num">Validated 01</span><h4>文本优先最易开始</h4><p>文本与材料输入被验证为新用户最容易理解的创建入口。</p></div>
+            <div class="line-card"><span class="num">Validated 02</span><h4>可编辑结构建立信任</h4><p>用户需要在生成完整内容前审核和修改课程逻辑。</p></div>
+            <div class="line-card"><span class="num">Validated 03</span><h4>多格式输出提升价值</h4><p>同一课程内容可转化为演示文稿、视频和 LMS 材料。</p></div>
+          </div>
+          <div class="output-list" style="margin-top:18px">
+            <span>MVP 产品范围</span><span>人机协作工作流</span><span>信息架构</span><span>高保真原型</span><span>组件与视觉系统</span><span>场景验证材料</span><span>测试与迭代总结</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case case-employee" id="case02">
+      <div class="wrap">
+        <div class="case-top reveal">
+          <div>
+            <p class="case-index">Case 02 · Complex Enterprise UX</p>
+            <h2 class="case-title">蔚来员工绩效与<br>服务体验系统</h2>
+            <p class="case-lead">面向 3 万+ 员工，重构绩效盘点与一站式员工服务体验。通过研究、流程重构、信息架构、组件规范和上线验证，帮助员工更快理解流程、完成任务与找到组织服务。</p>
+          </div>
+          <div class="case-meta">
+            <div class="meta"><span class="mini-label">Role</span><strong>资深体验设计师</strong></div>
+            <div class="meta"><span class="mini-label">Audience</span><strong>3 万+ 员工</strong></div>
+            <div class="meta"><span class="mini-label">Scope</span><strong>绩效盘点<br>一站式服务</strong></div>
+            <div class="meta"><span class="mini-label">Method</span><strong>研究 · 测试<br>规范 · 验证</strong></div>
+          </div>
+        </div>
+
+        <div class="project-intro reveal">
+          <div class="intro-item"><span class="mini-label">项目是什么</span><b>员工关键任务与服务入口</b><p>由绩效盘点系统和一站式员工服务平台组成，服务 3 万+ 员工的管理任务与日常组织服务。</p></div>
+          <div class="intro-item"><span class="mini-label">遇到什么问题</span><b>复杂度超过原有体验能力</b><p>组织扩大后，关键流程难理解、数据处理低效、服务入口分散，跨业务线体验也不一致。</p></div>
+          <div class="intro-item"><span class="mini-label">做了什么</span><b>从单点改版走向系统治理</b><p>基于研究与测试重构流程、信息架构和服务发现方式，并沉淀组件规范、推动上线验证。</p></div>
+        </div>
+
+        <div class="grid-4 reveal">
+          <div class="metric"><strong>4.68</strong><span>绩效盘点满意度，由 3.89 提升</span></div>
+          <div class="metric"><strong>91.6%</strong><span>认为新版一站式员工服务平台更好用</span></div>
+          <div class="metric"><strong>20,290</strong><span>绩效满意度测评覆盖用户</span></div>
+          <div class="metric"><strong>80+</strong><span>调整页面，并沉淀 10+ 组件与 20+ 规范</span></div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Why Change</p>
+            <h3>员工系统已经从辅助工具，变成完成关键任务与获取组织服务的重要入口。</h3>
+          </div>
+          <div class="grid-3">
+            <div class="line-card"><span class="num">Organization</span><h4>员工规模持续扩大</h4><p>更多角色、服务类型、组织流程和数据权限进入同一系统环境。</p></div>
+            <div class="line-card"><span class="num">Work Mode</span><h4>远程协作常态化</h4><p>大量线下沟通、人工协助和确认流程转移到线上完成。</p></div>
+            <div class="line-card"><span class="num">Globalization</span><h4>业务全球化推进</h4><p>体验需要支撑跨地域、跨业务线与更复杂的组织规则。</p></div>
+          </div>
+          <div class="grid-2" style="margin-top:18px">
+            <div class="chart-shell">
+              <div class="chart-title"><strong>研究证据</strong><span>Evidence before design</span></div>
+              <div class="bar-chart">
+                <div class="bar-row"><span>绩效系统满意度</span><div class="bar-track"><div class="bar-fill" style="--value:78%"></div></div><b>3.89 / 5</b></div>
+                <div class="bar-row"><span>服务平台可用性评估</span><div class="bar-track"><div class="bar-fill" style="--value:52.7%"></div></div><b>52.7</b></div>
+                <div class="bar-row"><span>可用性测试参与者</span><div class="bar-track"><div class="bar-fill" style="--value:60%"></div></div><b>30 人</b></div>
+              </div>
+            </div>
+            <div class="question-grid">
+              <div class="question"><b>KEY QUESTION 01</b>员工能否快速理解绩效盘点、校准和确认流程？</div>
+              <div class="question"><b>KEY QUESTION 02</b>员工能否快速找到需要的服务、知识或人工支持？</div>
+              <div class="question"><b>KEY QUESTION 03</b>不同业务线能否复用统一组件、规范和交互模式？</div>
+              <div class="question"><b>DESIGN PRINCIPLE</b>先从数据和用户反馈定位真实问题，避免主观改版。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Diagnosis</p>
+            <h3>从“内部工具改版”，转向员工体验系统的整体治理。</h3>
+          </div>
+          <div class="grid-3">
+            <div class="line-card"><span class="num">01 · Stability</span><h4>系统稳定感不足</h4><p>状态、进度和结果反馈不清晰，员工担心数据错误与误操作。</p></div>
+            <div class="line-card"><span class="num">02 · Learnability</span><h4>学习成本较高</h4><p>新用户难以理解页面结构、操作规则和下一步任务。</p></div>
+            <div class="line-card"><span class="num">03 · Efficiency</span><h4>核心流程效率低</h4><p>绩效校准中需要频繁查找、比对、返回和修改。</p></div>
+            <div class="line-card"><span class="num">04 · Discovery</span><h4>服务发现成本高</h4><p>大量服务入口与不同角色需求，让员工难以快速判断路径。</p></div>
+            <div class="line-card"><span class="num">05 · Consistency</span><h4>体验模式不一致</h4><p>业务线间交互方式不同，用户重复学习，团队难以复用。</p></div>
+            <div class="line-card"><span class="num">Evidence</span><h4>研究驱动判断</h4><p>结合满意度、30 人可用性测试、用户反馈与平台数据定位问题。</p></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Design Strategy</p>
+            <h3>将分散问题收敛为四个体验优先级：稳定、易学、高效、可发现。</h3>
+          </div>
+          <div class="priority-map">
+            <div class="priority"><i>01 · STABILITY</i><b>提升系统稳定感</b><span>清楚反馈当前状态、流程进度和操作结果，减少员工对数据错误或误操作的担忧。</span></div>
+            <div class="priority"><i>02 · LEARNABILITY</i><b>降低学习成本</b><span>贴近表格、筛选、分步引导和任务列表等熟悉模式，让用户使用已有经验。</span></div>
+            <div class="priority"><i>03 · EFFICIENCY</i><b>提升核心流程效率</b><span>让用户在正确时间看到正确信息，并尽量减少跨页面跳转和上下文丢失。</span></div>
+            <div class="priority"><i>04 · DISCOVERY</i><b>提升服务发现效率</b><span>让不同角色在具体场景下快速找到相关服务、知识和人工支持。</span></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Performance System</p>
+            <h3>先理解流程，再处理数据；先看到关键状态，再进入具体操作。</h3>
+          </div>
+          <div class="compare">
+            <div class="compare-col">
+              <h4>原体验阻力</h4>
+              <div class="compare-row"><i></i><span>高密度数据中重点不清晰</span></div>
+              <div class="compare-row"><i></i><span>复杂任务的当前阶段与下一步不明确</span></div>
+              <div class="compare-row"><i></i><span>操作路径长，修改需要反复跳转</span></div>
+            </div>
+            <div class="compare-col">
+              <h4>重构后的任务逻辑</h4>
+              <div class="compare-row"><i></i><span>用熟悉的表格、筛选与上下布局降低学习成本</span></div>
+              <div class="compare-row"><i></i><span>前置整体进度、待办、风险与关键字段</span></div>
+              <div class="compare-row"><i></i><span>支持固定重点对象与原位编辑</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Calibration Workflow</p>
+            <h3>围绕“任务效率”重建绩效校准流程，而不只是减少页面数量。</h3>
+          </div>
+          <div class="chart-shell">
+            <div class="chart-title"><strong>校准任务顺序</strong><span>Information → judgment → action</span></div>
+            <div class="timeline" style="--count:5">
+              <div class="time-point"><b>流程概览</b>先理解整体进度、当前阶段、待处理任务与风险项。</div>
+              <div class="time-point"><b>任务优先级</b>清晰区分待办、进行中和已完成状态。</div>
+              <div class="time-point"><b>关键字段前置</b>将影响判断的指标、星级、状态与结果置于高优先级。</div>
+              <div class="time-point"><b>固定重点对象</b>复杂数据处理时保留重点成员或关键字段。</div>
+              <div class="time-point"><b>原位编辑</b>在当前上下文中完成修改，减少返回和跳转。</div>
+            </div>
+          </div>
+          <div class="quote">对于绩效校准，效率提升来自重新安排信息、任务和操作之间的关系，而不是简单缩短页面链路。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Systemization & Result</p>
+            <h3>把单次体验改进沉淀为可复用、可维护、可推广的企业设计能力。</h3>
+          </div>
+          <div class="grid-2">
+            <div class="chart-shell">
+              <div class="chart-title"><strong>系统化沉淀</strong><span>Reusable patterns</span></div>
+              <div class="bar-chart">
+                <div class="bar-row"><span>调整页面</span><div class="bar-track"><div class="bar-fill" style="--value:92%"></div></div><b>80+</b></div>
+                <div class="bar-row"><span>通用组件</span><div class="bar-track"><div class="bar-fill" style="--value:58%"></div></div><b>10+</b></div>
+                <div class="bar-row"><span>体验规范</span><div class="bar-track"><div class="bar-fill" style="--value:76%"></div></div><b>20+</b></div>
+                <div class="bar-row"><span>应用业务线场景</span><div class="bar-track"><div class="bar-fill" style="--value:52%"></div></div><b>9</b></div>
+              </div>
+            </div>
+            <div class="chart-shell">
+              <div class="chart-title"><strong>满意度变化</strong><span>Before / after</span></div>
+              <div class="bar-chart">
+                <div class="bar-row"><span>上线前</span><div class="bar-track"><div class="bar-fill" style="--value:78%"></div></div><b>3.89</b></div>
+                <div class="bar-row"><span>上线后</span><div class="bar-track"><div class="bar-fill" style="--value:94%"></div></div><b>4.68</b></div>
+              </div>
+              <p class="copy" style="margin:28px 0 0">用户反馈集中在操作更清晰、数据查看更高效、指引更有帮助，以及系统体验更专业可信。</p>
+            </div>
+          </div>
+          <div class="output-list" style="margin-top:18px">
+            <span>步骤条</span><span>任务状态</span><span>数据筛选</span><span>新手引导</span><span>固定查看</span><span>原位编辑</span><span>权限与异常反馈</span>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Service Platform</p>
+            <h3>让员工不需要理解复杂后台结构，也能快速找到相关服务。</h3>
+          </div>
+          <div class="diagram">
+            <div class="flow">
+              <div class="flow-step"><i>01</i><b>用户层</b><span>员工、业务支持人员、主管等不同角色</span></div>
+              <div class="flow-step"><i>02</i><b>入口层</b><span>企微、微信、飞书、移动端和电脑端</span></div>
+              <div class="flow-step"><i>03</i><b>业务层</b><span>考勤、薪资、合同、证明、招聘等服务</span></div>
+              <div class="flow-step"><i>04</i><b>支撑层</b><span>规则、版本、权限、标签与灰度发布</span></div>
+              <div class="flow-step"><i>05</i><b>数据层</b><span>采集、加密、隔离、输出与系统对接</span></div>
+              <div class="flow-step"><i>06</i><b>推荐层</b><span>基于身份、时间和场景触达服务</span></div>
+            </div>
+          </div>
+          <div class="quote">好的员工系统不是看起来更轻，而是让员工在复杂组织中更快找到服务、更安全地完成任务。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Service Discovery</p>
+            <h3>平台设计的难点不是把所有服务放在一起，而是让不同员工在不同情境下找到正确入口。</h3>
+          </div>
+          <div class="heatmap">
+            <div class="head">问题 / 方案</div><div class="head">高频入口</div><div class="head">角色场景</div><div class="head">知识内容</div><div class="head">低门槛输入</div><div class="head">智能推荐</div>
+            <div class="head">入口分散</div><div class="hot">核心</div><div class="warm">辅助</div><div></div><div></div><div></div>
+            <div class="head">角色差异</div><div></div><div class="hot">核心</div><div></div><div></div><div class="warm">辅助</div>
+            <div class="head">内容难找</div><div class="warm">辅助</div><div></div><div class="hot">核心</div><div></div><div class="warm">辅助</div>
+            <div class="head">输入查询不便</div><div></div><div></div><div></div><div class="hot">核心</div><div></div>
+            <div class="head">推荐相关性低</div><div></div><div class="warm">辅助</div><div></div><div></div><div class="hot">核心</div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Validation & Reflection</p>
+            <h3>从界面优化走向员工服务效率与组织体验能力的提升。</h3>
+          </div>
+          <div class="grid-3">
+            <div class="metric"><strong>3,420</strong><span>一站式员工服务平台对照测试有效样本</span></div>
+            <div class="metric"><strong>91.6%</strong><span>参与者认为新版平台更好用</span></div>
+            <div class="metric"><strong>+977</strong><span>重点活动入口点击增长次数</span></div>
+          </div>
+          <div class="grid-2" style="margin-top:18px">
+            <div class="line-card"><span class="num">For Employees</span><h4>跨系统使用更熟悉</h4><p>类似任务采用一致交互方式，减少重复学习，更安全地完成关键任务。</p></div>
+            <div class="line-card"><span class="num">For Teams</span><h4>交付能力可持续复用</h4><p>设计和研发复用已有模式，降低后续项目沟通、设计与实现成本。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case case-system dark-case" id="case03">
+      <div class="wrap">
+        <div class="case-top reveal">
+          <div>
+            <p class="case-index">Case 03 · Enterprise Design System</p>
+            <h2 class="case-title">NIO Dig Design</h2>
+            <p class="case-lead">从零散设计资产到企业级设计系统，连接设计原则、组件、业务模板、开发资产、治理机制和数据追踪，提升多业务线体验一致性与团队协作效率。</p>
+          </div>
+          <div class="case-meta">
+            <div class="meta"><span class="mini-label">Focus</span><strong>设计系统建设</strong></div>
+            <div class="meta"><span class="mini-label">Value</span><strong>一致性 · 效率<br>组织协作</strong></div>
+            <div class="meta"><span class="mini-label">Assets</span><strong>组件 · 模板<br>规范 · 工具</strong></div>
+            <div class="meta"><span class="mini-label">Governance</span><strong>准入 · 版本<br>反馈 · 共建</strong></div>
+          </div>
+        </div>
+
+        <div class="project-intro reveal">
+          <div class="intro-item"><span class="mini-label">项目是什么</span><b>企业级设计系统</b><p>面向蔚来内部多业务线，连接设计原则、组件、业务模板、开发资产、治理流程与数据追踪。</p></div>
+          <div class="intro-item"><span class="mini-label">遇到什么问题</span><b>分散资产无法支撑规模增长</b><p>不同项目反复设计和开发同类模块，产品体验、研发实现和团队协作方式缺乏一致性。</p></div>
+          <div class="intro-item"><span class="mini-label">做了什么</span><b>建设组织级体验基础设施</b><p>建立分层资产、页面模式、设计研发协作闭环和持续推广治理机制，推动真实业务采用。</p></div>
+        </div>
+
+        <div class="grid-4 reveal">
+          <div class="metric"><strong>873</strong><span>设计资产下载总量</span></div>
+          <div class="metric"><strong>6,913</strong><span>访问量总和</span></div>
+          <div class="metric"><strong>30+</strong><span>接入项目</span></div>
+          <div class="metric"><strong>91%</strong><span>内部使用占比</span></div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Why Design System</p>
+            <h3>多业务线快速增长后，体验问题开始发生在团队、系统和交付流程之间。</h3>
+          </div>
+          <div class="grid-4">
+            <div class="line-card"><span class="num">01</span><h4>重复设计成本高</h4><p>表格、表单、状态、弹窗和配置页等模块在不同项目中反复设计。</p></div>
+            <div class="line-card"><span class="num">02</span><h4>产品体验不一致</h4><p>业务线使用不同规则，员工跨系统操作时需要重复学习。</p></div>
+            <div class="line-card"><span class="num">03</span><h4>研发实现存在差异</h4><p>同类组件被重复开发，样式、状态和交互行为难以保持一致。</p></div>
+            <div class="line-card"><span class="num">04</span><h4>协作沟通成本高</h4><p>设计、产品和研发反复讨论基础布局、状态与异常处理。</p></div>
+          </div>
+          <div class="quote">设计系统的价值不只是统一视觉，而是建立跨团队可复用、可维护、可迭代的产品体验基础设施。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Evolution Path</p>
+            <h3>设计系统不是一次性组件库，而是在业务复杂度提升中持续演进的组织能力。</h3>
+          </div>
+          <div class="chart-shell">
+            <div class="chart-title"><strong>Dig Design 演进路径</strong><span>Assets → infrastructure</span></div>
+            <div class="timeline" style="--count:5">
+              <div class="time-point"><b>0 阶段</b>没有统一资产，设计主要依赖个人经验，交付质量不稳定。</div>
+              <div class="time-point"><b>基础组件</b>沉淀按钮、输入、选择与反馈等高频基础组件。</div>
+              <div class="time-point"><b>设计规范</b>建立视觉、交互、状态与页面层规则。</div>
+              <div class="time-point"><b>业务模板</b>抽象表格页、表单页、详情页等高频结构。</div>
+              <div class="time-point"><b>Dig Design</b>连接设计、开发、业务、治理与数据追踪。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">System Architecture</p>
+            <h3>设计系统不能只建设资产，还必须建设资产的使用、维护与更新机制。</h3>
+          </div>
+          <div class="system-layers">
+            <div class="system-layer" style="--color:#7658ff"><b>价值目标层</b><span>统一体验、提升效率、支撑业务创新，让设计能力被更多项目复用。</span></div>
+            <div class="system-layer" style="--color:#2f72ed"><b>设计能力层</b><span>设计原则、设计语言、基础规范、组件、图标、图表、品牌资产与业务模板。</span></div>
+            <div class="system-layer" style="--color:#19bfcf"><b>工具支撑层</b><span>设计工具、组件库、插件和页面搭建能力，让团队可以直接使用已有资产。</span></div>
+            <div class="system-layer" style="--color:#1fbd87"><b>管理治理层</b><span>组件入库、版本管理、上线评审、反馈收集、生命周期管理与数据分析。</span></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Asset Layers</p>
+            <h3>从基础组件走向更接近真实交付的业务页面模式。</h3>
+          </div>
+          <div class="grid-4">
+            <div class="line-card"><span class="num">Layer 01</span><h4>基础规范</h4><p>色彩、字体、间距、栅格、状态与层级规则。</p></div>
+            <div class="line-card"><span class="num">Layer 02</span><h4>基础与数据组件</h4><p>按钮、输入、表格、筛选、图表与数据卡片。</p></div>
+            <div class="line-card"><span class="num">Layer 03</span><h4>反馈组件</h4><p>成功、错误、空状态、加载、异常与确认反馈。</p></div>
+            <div class="line-card"><span class="num">Layer 04</span><h4>业务模板</h4><p>列表页、表单页、详情页、配置页与管理页模板。</p></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Business Page Patterns</p>
+            <h3>企业产品的大量页面，由少数高频页面模式反复组合而成。</h3>
+          </div>
+          <div class="pattern-grid">
+            <div class="pattern"><div class="pattern-top"><i></i><i></i><i></i></div><h4>表格页模式</h4><p>适用于员工、库存、活动、任务、配置和数据准备等列表管理场景。</p><div class="pattern-line"></div><div class="pattern-line short"></div><div class="pattern-line"></div><div class="pattern-line short"></div><span class="mini-label">筛选 · 排序 · 分页 · 批量操作 · 字段控制</span></div>
+            <div class="pattern"><div class="pattern-top"><i></i><i></i><i></i></div><h4>表单页模式</h4><p>适用于订单、申请、报告、发布、登记与规则配置等录入场景。</p><div class="pattern-line short"></div><div class="pattern-line"></div><div class="pattern-line short"></div><div class="pattern-line"></div><span class="mini-label">字段分组 · 校验 · 错误提示 · 草稿保存</span></div>
+            <div class="pattern"><div class="pattern-top"><i></i><i></i><i></i></div><h4>详情页模式</h4><p>适用于订单、报告、账户、任务和申请记录等查看场景。</p><div class="pattern-line"></div><div class="pattern-line short"></div><div class="pattern-line short"></div><div class="pattern-line"></div><span class="mini-label">信息层级 · 状态 · 编辑 · 历史 · 权限</span></div>
+          </div>
+          <div class="quote">页面模式比单独的按钮或输入框更接近真实交付，也更能直接提升设计与研发复用效率。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Collaboration Loop</p>
+            <h3>让设计系统进入设计与研发的日常工作流。</h3>
+          </div>
+          <div class="orbit">
+            <div class="orbit-center">Dig Design<br>协作闭环</div>
+            <div class="orbit-node o1">设计沉淀<br><span class="mini-label">Patterns</span></div>
+            <div class="orbit-node o2">组件开发<br><span class="mini-label">Development</span></div>
+            <div class="orbit-node o3">业务使用<br><span class="mini-label">Adoption</span></div>
+            <div class="orbit-node o4">反馈迭代<br><span class="mini-label">Iteration</span></div>
+          </div>
+          <div class="quote">设计系统不是设计团队单向输出规范，而是设计、研发和业务团队共同维护的协作机制。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Promotion & Governance</p>
+            <h3>发布组件只是开始，真正困难的是让系统持续被采用、维护并保持有效。</h3>
+          </div>
+          <div class="governance-grid">
+            <div class="governance"><i>01</i><b>组件准入机制</b><span>根据使用频率、业务通用性、复用价值和维护成本判断是否沉淀。</span></div>
+            <div class="governance"><i>02</i><b>版本管理机制</b><span>设计资产与开发资产同步更新，明确变更范围和使用建议。</span></div>
+            <div class="governance"><i>03</i><b>反馈机制</b><span>收集缺失场景、规则冲突和实现问题，持续发现真实需求。</span></div>
+            <div class="governance"><i>04</i><b>共建机制</b><span>设计师、产品经理和研发共同参与场景补充与组件完善。</span></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Result & Reflection</p>
+            <h3>让设计能力从单个项目交付，沉淀为组织可以持续复用的系统能力。</h3>
+          </div>
+          <div class="grid-3">
+            <div class="line-card"><span class="num">Experience</span><h4>提升体验一致性</h4><p>统一基础规范、组件和页面模式，减少不同系统之间的体验差异。</p></div>
+            <div class="line-card"><span class="num">Delivery</span><h4>提升交付效率</h4><p>设计师和研发复用已有资产，降低重复设计、沟通和开发成本。</p></div>
+            <div class="line-card"><span class="num">Organization</span><h4>提升组织协作能力</h4><p>用资产、反馈机制和数据追踪，将设计系统转化为跨团队协作工具。</p></div>
+          </div>
+          <div class="chart-shell" style="margin-top:18px">
+            <div class="chart-title"><strong>组织采用信号</strong><span>Adoption metrics</span></div>
+            <div class="bar-chart">
+              <div class="bar-row"><span>访问量总和</span><div class="bar-track"><div class="bar-fill" style="--value:100%"></div></div><b>6,913</b></div>
+              <div class="bar-row"><span>下载总量</span><div class="bar-track"><div class="bar-fill" style="--value:72%"></div></div><b>873</b></div>
+              <div class="bar-row"><span>接入项目</span><div class="bar-track"><div class="bar-fill" style="--value:61%"></div></div><b>30+</b></div>
+              <div class="bar-row"><span>覆盖一级部门</span><div class="bar-track"><div class="bar-fill" style="--value:43%"></div></div><b>4</b></div>
+              <div class="bar-row"><span>内部使用占比</span><div class="bar-track"><div class="bar-fill" style="--value:91%"></div></div><b>91%</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case case-medical" id="case04">
+      <div class="wrap">
+        <div class="case-top reveal">
+          <div>
+            <p class="case-index">Case 04 · Multi-role Service System</p>
+            <h2 class="case-title">森罗树医疗保险<br>服务平台</h2>
+            <p class="case-lead">围绕医疗保险与七日陪护新业务，梳理从用户使用服务、保险审核、护工任务执行到数据查看的完整链路，重点解决复杂流程下的一致性、执行效率和多场景适配。</p>
+          </div>
+          <div class="case-meta">
+            <div class="meta"><span class="mini-label">Scope</span><strong>保险审核<br>陪护服务</strong></div>
+            <div class="meta"><span class="mini-label">Roles</span><strong>6 类角色协同</strong></div>
+            <div class="meta"><span class="mini-label">Platforms</span><strong>后台 · 移动端<br>数据看板</strong></div>
+            <div class="meta"><span class="mini-label">Iterations</span><strong>2 个大版本</strong></div>
+          </div>
+        </div>
+
+        <div class="project-intro reveal">
+          <div class="intro-item"><span class="mini-label">项目是什么</span><b>医疗保险与陪护服务平台</b><p>覆盖保险审核、陪护服务、订单任务、数据看板和多端协同的复杂 B 端业务系统。</p></div>
+          <div class="intro-item"><span class="mini-label">遇到什么问题</span><b>多角色链路存在信息断点</b><p>保险、医疗、商家、护工、用户和平台管理者需要跨平台、跨时间节点协同完成服务。</p></div>
+          <div class="intro-item"><span class="mini-label">做了什么</span><b>重构可执行服务流程</b><p>完成业务流程建模、任务分析、原型与界面设计，并通过多端和多模输入降低一线操作成本。</p></div>
+        </div>
+
+        <div class="grid-3 reveal">
+          <div class="metric"><strong>+1.8%</strong><span>订单审核与护工任务关联成功率提升</span></div>
+          <div class="metric"><strong>6</strong><span>保险、医疗、商家、护工、用户与平台角色</span></div>
+          <div class="metric"><strong>3</strong><span>一致、高效、灵活的设计策略</span></div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">System Scope</p>
+            <h3>这不是单一产品流程，而是一组跨角色、跨平台、跨时间节点的服务链路。</h3>
+          </div>
+          <div class="swimlane">
+            <div class="lane"><span class="lane-name">角色 / 节点</span><span>入驻</span><span>身份验证</span><span>服务申请</span><span>订单审核</span><span>任务执行</span><span>反馈沉淀</span></div>
+            <div class="lane"><span class="lane-name">商家</span><span class="active">提交资质</span><span></span><span class="active">提供服务</span><span></span><span></span><span class="active">查看结果</span></div>
+            <div class="lane"><span class="lane-name">用户</span><span></span><span class="active">身份验证</span><span class="active">预约服务</span><span></span><span></span><span class="active">评价</span></div>
+            <div class="lane"><span class="lane-name">平台管理者</span><span class="active">审核</span><span></span><span></span><span class="active">订单审核</span><span class="active">任务关联</span><span class="active">数据查看</span></div>
+            <div class="lane"><span class="lane-name">护工</span><span></span><span></span><span></span><span></span><span class="active">接收与执行</span><span class="active">提交反馈</span></div>
+            <div class="lane"><span class="lane-name">保险 / 医疗</span><span></span><span class="active">信息校验</span><span></span><span class="active">保险审核</span><span></span><span class="active">数据对接</span></div>
+          </div>
+          <div class="quote">流程图的价值不是画出步骤，而是明确每个节点的责任角色、输入信息、系统状态与后续动作。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Service Blueprint</p>
+            <h3>把分散的服务链路整理为每个角色都能执行的流程。</h3>
+          </div>
+          <div class="diagram">
+            <div class="flow">
+              <div class="flow-step"><i>01</i><b>商家入驻</b><span>提交信息、补充资质、等待平台审核</span></div>
+              <div class="flow-step"><i>02</i><b>用户使用</b><span>身份验证、选择服务、填写预约信息</span></div>
+              <div class="flow-step"><i>03</i><b>数据对接</b><span>打通小程序、SaaS 与后台记录</span></div>
+              <div class="flow-step"><i>04</i><b>订单审核</b><span>确认订单是否进入陪护流程</span></div>
+              <div class="flow-step"><i>05</i><b>护工任务</b><span>接收、执行任务并提交服务反馈</span></div>
+              <div class="flow-step"><i>06</i><b>服务结束</b><span>记录评价、费用与后续数据</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Design Strategy</p>
+            <h3>用一致、高效、灵活三个目标，让设计回到业务执行和一线操作成本。</h3>
+          </div>
+          <div class="triad">
+            <div class="triad-item"><h4>一致</h4><p>简化业务语言、统一基础组件，让相似任务保持一致操作模式，降低多角色学习和迁移成本。</p></div>
+            <div class="triad-item"><h4>高效</h4><p>聚合相似流程、动态呈现当前任务、突出审核和任务状态，减少订单与任务流转断点。</p></div>
+            <div class="triad-item"><h4>灵活</h4><p>支持后台、移动端、数据看板及多种录入方式，适配不同设备、场景和执行角色。</p></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Key Experience</p>
+            <h3>用对话式引导和多模输入，降低一线信息录入门槛。</h3>
+          </div>
+          <div class="grid-2">
+            <div class="chat-ui">
+              <div class="chat-top"><i></i><span class="mini-label">陪护服务记录</span></div>
+              <div class="bubble">请录入本次陪护服务的体温信息。</div>
+              <div class="bubble user">36.7℃</div>
+              <div class="bubble">已记录。是否继续录入心率？</div>
+              <div class="chat-actions"><span>继续录入</span><span>语音输入</span><span>上传设备数据</span></div>
+            </div>
+            <div class="grid-2">
+              <div class="line-card"><span class="num">01</span><h4>对话式表单</h4><p>逐步引导陪护人员填写信息，降低培训成本与出错风险。</p></div>
+              <div class="line-card"><span class="num">02</span><h4>多平台交互</h4><p>适配后台、移动端和数据看板中的不同任务。</p></div>
+              <div class="line-card"><span class="num">03</span><h4>多模输入</h4><p>支持票据识别、设备接入和信息导入，减少手动录入。</p></div>
+              <div class="line-card"><span class="num">04</span><h4>状态连续性</h4><p>明确任务责任、输入信息、系统状态与后续动作。</p></div>
+            </div>
+          </div>
+          <div class="quote">复杂业务系统设计的关键不是增加功能，而是让不同角色在正确节点完成正确任务。</div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Project Process</p>
+            <h3>通过业务梳理、原型推演、评审测试和两次大版本迭代，逐步改善任务关系。</h3>
+          </div>
+          <div class="chart-shell">
+            <div class="chart-title"><strong>项目推进过程</strong><span>Discover → iterate</span></div>
+            <div class="timeline" style="--count:5">
+              <div class="time-point"><b>业务梳理</b>整理商家、用户、平台、护工与医疗保险相关流程。</div>
+              <div class="time-point"><b>草图推演</b>通过流程图和草图对齐上下游业务理解。</div>
+              <div class="time-point"><b>原型设计</b>搭建后台、移动端、任务流转与信息采集原型。</div>
+              <div class="time-point"><b>评审测试</b>与客户、研发和异地同事反复评审关键流程。</div>
+              <div class="time-point"><b>版本迭代</b>经过两个大版本，调整任务关联与审核路径。</div>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top:18px">
+            <div class="line-card"><span class="num">Project Result</span><h4>流程改进产生真实业务价值</h4><p>运营审核订单与护工任务关联成功率提升 1.8%，证明流程聚类与任务关系梳理的有效性。</p></div>
+            <div class="line-card"><span class="num">Capability Growth</span><h4>沉淀复杂 B 端流程设计经验</h4><p>积累流程建模、非专业角色沟通、多角色系统设计和复杂业务协作能力。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case case-selected" id="case05">
+      <div class="wrap">
+        <div class="case-top reveal">
+          <div>
+            <p class="case-index">Case 05 · Selected Works</p>
+            <h2 class="case-title">精选补充项目</h2>
+            <p class="case-lead">补充展示用户研究、ToC 体验、移动端产品、品牌表达与视觉执行能力，与 AI 产品、企业系统和设计系统主线形成完整能力组合。</p>
+          </div>
+          <div class="case-meta">
+            <div class="meta"><span class="mini-label">Consumer</span><strong>教育产品体验</strong></div>
+            <div class="meta"><span class="mini-label">Desktop</span><strong>协作软件重构</strong></div>
+            <div class="meta"><span class="mini-label">Mobile</span><strong>数字钱包体验</strong></div>
+            <div class="meta"><span class="mini-label">Brand</span><strong>官网与视觉表达</strong></div>
+          </div>
+        </div>
+        <div class="project-intro reveal">
+          <div class="intro-item"><span class="mini-label">项目是什么</span><b>跨产品形态的补充项目</b><p>覆盖在线教育、桌面协作、数字钱包、招聘官网以及 IP、插画和活动视觉等设计实践。</p></div>
+          <div class="intro-item"><span class="mini-label">解决什么问题</span><b>证明主线之外的设计宽度</b><p>主案例聚焦 AI 和复杂企业系统，需要补充 ToC、移动端、品牌表达和视觉执行能力证据。</p></div>
+          <div class="intro-item"><span class="mini-label">展示什么</span><b>研究、交互与视觉的综合能力</b><p>通过不同项目展示信息架构、任务链路、状态反馈、品牌体验和视觉表达的适配能力。</p></div>
+        </div>
+        <div class="work-grid reveal">
+          <article class="work" style="--work-bg:linear-gradient(145deg,#12966f,#49d0a2)">
+            <span class="work-tag">Online Education · User Research</span><span class="work-glyph">芽</span>
+            <h3>心芽在线教育</h3><p>从用户研究到首页信息架构与课程转化优化，建立更清晰的课程、任务和推荐内容层级。</p>
+          </article>
+          <article class="work" style="--work-bg:linear-gradient(145deg,#336de8,#7449e8)">
+            <span class="work-tag">Desktop Software · IA</span><span class="work-glyph">D</span>
+            <h3>钉钉 Mac 重设计</h3><p>围绕远程办公与在线课堂场景，重组复杂协作软件的信息架构和桌面空间。</p>
+          </article>
+          <article class="work" style="--work-bg:linear-gradient(145deg,#11182f,#2572b8)">
+            <span class="work-tag">FinTech · Mobile UX</span><span class="work-glyph">B</span>
+            <h3>BCAAS 金融平台</h3><p>通过清晰资产信息与确定性操作反馈，探索移动端数字钱包体验。</p>
+          </article>
+          <article class="work" style="--work-bg:linear-gradient(145deg,#121725,#40556f)">
+            <span class="work-tag">Employer Brand · Website</span><span class="work-glyph">N</span>
+            <h3>蔚来校招官网</h3><p>平衡学生的信息获取效率与业务侧雇主品牌表达，整合岗位、活动和申请路径。</p>
+          </article>
+          <article class="work" style="--work-bg:linear-gradient(115deg,#e85f9d,#8e64e8 55%,#347ae8)">
+            <span class="work-tag">IP · Illustration · Icon · Event Visual</span><span class="work-glyph">VIS</span>
+            <h3>视觉探索</h3><p>用 IP、活动视觉、插画、图标和品牌延展，补充产品体验之外的视觉执行与表达能力。</p>
+          </article>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Project Details</p>
+            <h3>五个补充项目，从不同维度完善 ToC、移动端、品牌与视觉能力证明。</h3>
+          </div>
+          <div class="grid-2">
+            <div class="line-card"><span class="num">心芽在线教育</span><h4>从用户研究到课程转化优化</h4><p>优先展示当前最相关的课程、学习状态和待办事项；重新组织课程、活动、任务和推荐内容；通过清爽绿色视觉与亲和插画建立教育产品信任感。</p></div>
+            <div class="line-card"><span class="num">钉钉 Mac 重设计</span><h4>复杂协作软件的信息架构重构</h4><p>围绕远程办公和在线课堂，重新梳理课堂、文件、消息与文档关系；利用多栏布局、列表详情并列和文件预览提升桌面空间效率。</p></div>
+            <div class="line-card"><span class="num">BCAAS 金融平台</span><h4>数字钱包移动端金融体验</h4><p>使用卡片、趋势图和分组信息呈现账户余额与交易记录；通过明确状态反馈，减少金融操作中的不确定感。</p></div>
+            <div class="line-card"><span class="num">蔚来校招官网</span><h4>品牌招聘场景下的官网设计</h4><p>兼顾学生查找岗位、了解流程与业务侧传递雇主品牌吸引力，整合品牌展示、岗位信息、活动内容和投递入口。</p></div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="block-head">
+            <p class="eyebrow">Capability Spectrum</p>
+            <h3>补充项目不抢占主线，而是证明设计能力能够覆盖不同产品形态与表达层级。</h3>
+          </div>
+          <div class="chart-shell">
+            <div class="chart-title"><strong>项目能力覆盖光谱</strong><span>Research · UX · UI · Brand · Visual</span></div>
+            <div class="spectrum">
+              <div class="spectrum-row"><span>心芽在线教育</span><div class="spectrum-cells"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i></div></div>
+              <div class="spectrum-row"><span>钉钉 Mac 重设计</span><div class="spectrum-cells"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+              <div class="spectrum-row"><span>BCAAS 金融平台</span><div class="spectrum-cells"><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i></div></div>
+              <div class="spectrum-row"><span>蔚来校招官网</span><div class="spectrum-cells"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+              <div class="spectrum-row"><span>视觉探索</span><div class="spectrum-cells"><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+            </div>
+            <div class="output-list" style="margin-top:30px">
+              <span>用户研究</span><span>信息架构</span><span>交互设计</span><span>移动端体验</span><span>品牌官网</span><span>插画与图标</span><span>视觉执行</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="research" id="research">
+      <div class="wrap research-inner">
+        <div class="section-head reveal">
+          <div>
+            <span class="section-no">06 / AI Capability & Research</span>
+            <h2 class="display-title">持续研究 AI，<br>也持续重构设计方法。</h2>
+          </div>
+          <p class="section-intro">该章节预留用于展示 AI 工具实践、产品研究、设计工作流实验与个人观点。后续内容将在统一视觉系统中继续补充。</p>
+        </div>
+        <div class="placeholder-grid reveal">
+          <div class="placeholder"><i></i><strong>AI 产品研究</strong><span>Reserved chapter</span></div>
+          <div class="placeholder"><i></i><strong>设计工作流实验</strong><span>Reserved chapter</span></div>
+          <div class="placeholder"><i></i><strong>观点与方法沉淀</strong><span>Reserved chapter</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="contact-title reveal">期待一起，<br><span>设计清晰的未来。</span></h2>
+        <div class="contact-row reveal">
+          <a class="contact-item" href="tel:18616390996"><span class="mini-label">Phone</span><strong>186 1639 0996</strong></a>
+          <a class="contact-item" href="mailto:Minr1003@163.com"><span class="mini-label">Email</span><strong>Minr1003@163.com</strong></a>
+        </div>
+        <footer class="footer">
+          <span>Rong Min · Senior Experience Designer</span>
+          <span>AI Product · Enterprise UX · Design System</span>
+          <span>Portfolio 2026</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const progress = document.getElementById("progress");
+    const nav = document.getElementById("nav");
+    const updateScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = `${max > 0 ? scrollY / max * 100 : 0}%`;
+      nav.classList.toggle("light", scrollY > innerHeight * .78 && scrollY < document.getElementById("research").offsetTop - 100);
+    };
+    addEventListener("scroll", updateScroll, { passive: true });
+    updateScroll();
+
+    const case01PreviewAssets = {
+      0: ["hero", "case01-hero-preview.png", "Case01 Project Hero：真实 Ryze 产品界面的展示原型", 2880, 2700],
+      1: ["scope", "case01-scope-preview.png", "Case01 Scope Definition：可行方向、范围收敛与核心任务", 2560, 1600],
+      4: ["workflow", "case01-human-ai-workflow-preview.png", "Case01 Human–AI Workflow：Human 与 AI 的双责任线", 2680, 1540],
+      5: ["ia", "case01-ia-preview.png", "Case01 Information Architecture：Creation、Editing 与 Output 三层结构", 2640, 1520],
+      7: ["key-design", "case01-key-design-preview.png", "Case01 Key Design：Start 与 Edit 的真实产品界面", 2640, 2200],
+      8: ["validation", "case01-validation-preview.png", "Case01 Scenario Validation：三类场景与三条验证结论", 2640, 1500]
+    };
+
+
+    const integrationPreviewAssets = [{"name":"case02-hero","case":"case02","slot":0,"source":"prototypes:/case02-hero/index.html","file":"assets/images/case02/case02-hero-preview.webp","width":2760,"height":2012},{"name":"case02-diagnosis-strategy","case":"case02","slot":2,"source":"prototypes:/case02-diagnosis-strategy/index.html","file":"assets/images/case02/case02-diagnosis-strategy-preview.webp","width":2640,"height":2146},{"name":"case02-performance-key-design","case":"case02","slot":4,"source":"prototypes:/case02-performance-key-design/index.html","file":"assets/images/case02/case02-performance-key-design-preview.webp","width":2720,"height":2512},{"name":"case02-result","case":"case02","slot":6,"source":"prototypes:/case02-result/index.html","file":"assets/images/case02/case02-result-preview.webp","width":2720,"height":2112},{"name":"case03-hero","case":"case03","slot":0,"source":"prototypes:/case03-hero/index.html","file":"assets/images/case03/case03-hero-preview.webp","width":2880,"height":1986},{"name":"case03-system-architecture","case":"case03","slot":3,"source":"prototypes:/case03-system-architecture/index.html","file":"assets/images/case03/case03-system-architecture-preview.webp","width":2880,"height":2200},{"name":"case03-business-patterns","case":"case03","slot":5,"source":"prototypes:/case03-business-patterns/index.html","file":"assets/images/case03/case03-business-patterns-preview.webp","width":2880,"height":2186},{"name":"case03-collaboration-governance","case":"case03","slot":6,"source":"prototypes:/case03-collaboration-governance/index.html","file":"assets/images/case03/case03-collaboration-governance-preview.webp","width":2880,"height":2324},{"name":"case03-adoption-result","case":"case03","slot":8,"source":"prototypes:/case03-adoption-result/index.html","file":"assets/images/case03/case03-adoption-result-preview.webp","width":2640,"height":2140},{"name":"case04-hero","case":"case04","slot":0,"source":"prototypes:/case04-hero/index.html","file":"assets/images/case04/case04-hero-preview.webp","width":2880,"height":2000},{"name":"case04-service-blueprint","case":"case04","slot":2,"source":"prototypes:/case04-service-blueprint/index.html","file":"assets/images/case04/case04-service-blueprint-preview.webp","width":2752,"height":2260},{"name":"case04-design-strategy","case":"case04","slot":3,"source":"prototypes:/case04-design-strategy/index.html","file":"assets/images/case04/case04-design-strategy-preview.webp","width":2736,"height":2042},{"name":"case04-process-result","case":"case04","slot":5,"source":"prototypes:/case04-process-result/index.html","file":"assets/images/case04/case04-process-result-preview.webp","width":2736,"height":2106},{"name":"case05-xinya","case":"case05","slot":"work:0","source":"prototypes:/case05-xinya/index.html","file":"assets/images/case05/case05-xinya-preview.webp","width":2880,"height":2000},{"name":"case05-dingtalk-mac","case":"case05","slot":"work:1","source":"prototypes:/case05-dingtalk-mac/index.html","file":"assets/images/case05/case05-dingtalk-mac-preview.webp","width":2880,"height":2000},{"name":"case05-nio-careers","case":"case05","slot":"work:3","source":"prototypes:/case05-nio-careers/index.html","file":"assets/images/case05/case05-nio-careers-preview.webp","width":2880,"height":2000},{"name":"case05-visual-exploration","case":"case05","slot":"work:4","source":"prototypes:/case05-visual-exploration/index.html","file":"assets/images/case05/case05-visual-exploration-preview.webp","width":2880,"height":1800},{"name":"case02-service-platform","case":"case02","slot":7,"source":"assets:/images:/recovery_assets:/approved_screenshots:/case02-service-platform.png","file":"assets/images/case02/case02-service-platform-preview.webp","width":1180,"height":970},{"name":"case04-key-experience","case":"case04","slot":4,"source":"assets:/images:/recovery_assets:/approved_screenshots:/case04-key-experience.png","file":"assets/images/case04/case04-key-experience-preview.webp","width":1158,"height":928},{"name":"case05-bcaas","case":"case05","slot":"work:2","source":"assets:/images:/recovery_assets:/approved_screenshots:/case05-bcaas.png","file":"assets/images/case05/case05-bcaas-preview.webp","width":1187,"height":900}];
+    const insertIntegrationImage = (asset, point, hero = false) => {
+      const shot = document.createElement("figure");
+      shot.className = `integration-preview-visual${hero ? " integration-preview-visual--hero" : ""}`;
+      shot.dataset.prototype = asset.source;
+      const image = document.createElement("img");
+      image.src = asset.file;
+      image.alt = asset.name.replaceAll("-", " ");
+      image.width = asset.width; image.height = asset.height;
+      image.loading = hero ? "eager" : "lazy"; image.decoding = "async";
+      shot.append(image);
+      if (hero) point.insertAdjacentElement("afterend", shot);
+      else if (point.matches(".work")) point.append(shot);
+      else point.querySelector(".block-head").insertAdjacentElement("afterend", shot);
+    };
+    integrationPreviewAssets.filter(a => typeof a.slot === "string").forEach(asset => {
+      insertIntegrationImage(asset, document.querySelectorAll(`#${asset.case} .work`)[Number(asset.slot.split(":")[1])]);
+    });
+
+    document.querySelectorAll(".case").forEach((caseEl, caseIndex) => {
+      const caseName = caseEl.querySelector(".case-title")?.textContent.replace(/\s+/g, " ").trim() || `Case ${caseIndex + 1}`;
+      const points = [caseEl.querySelector(".project-intro"), ...caseEl.querySelectorAll(".case-block")].filter(Boolean);
+      points.forEach((point, pointIndex) => {
+        if (caseEl.id === "case01") {
+          const preview = case01PreviewAssets[pointIndex];
+          if (!preview) return;
+          const [name, file, alt, width, height] = preview;
+          const shot = document.createElement("figure");
+          shot.className = `case01-preview-visual${pointIndex === 0 ? " case01-preview-visual--hero" : ""}`;
+          const image = document.createElement("img");
+          image.src = `assets/images/case01/${file}`;
+          image.alt = alt;
+          image.width = width;
+          image.height = height;
+          image.loading = pointIndex === 0 ? "eager" : "lazy";
+          image.decoding = "async";
+          shot.append(image);
+          if (pointIndex === 0) point.insertAdjacentElement("afterend", shot);
+          else {
+            point.dataset.integrationPreview = name;
+            point.querySelector(".block-head").insertAdjacentElement("afterend", shot);
+          }
+          return;
+        }
+        if (["case02", "case03", "case04", "case05"].includes(caseEl.id)) {
+          const asset = integrationPreviewAssets.find(a => a.case === caseEl.id && a.slot === pointIndex);
+          if (asset) insertIntegrationImage(asset, point, pointIndex === 0);
+          return; // Missing / unmapped slots stay empty; no generated placeholders.
+        }
+        const slot = document.createElement("figure");
+        slot.className = "image-placeholder";
+        slot.dataset.imageSlot = `case-${caseIndex + 1}-${pointIndex}`;
+        slot.innerHTML = `<figcaption><strong>${pointIndex === 0 ? "项目开场图片占位" : `设计执行图片占位 ${String(pointIndex).padStart(2, "0")}`}</strong><span>${caseName} · Replace with real project image</span></figcaption>`;
+        point.insertAdjacentElement("afterend", slot);
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    const canvas = document.getElementById("starfield");
+    const ctx = canvas.getContext("2d");
+    let points = [];
+    let digitTargets = {};
+    let activeDigit = null;
+    let hoveredDigit = null;
+    let autoDigit = null;
+    let autoDigitIndex = 0;
+    let autoDigitTimer = null;
+    let gatherStartedAt = 0;
+    const gatherDuration = 700;
+    let rotation = 0;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const digitCanvas = document.createElement("canvas");
+    const digitCtx = digitCanvas.getContext("2d", { willReadFrequently: true });
+    const makeDigitTargets = digit => {
+      const height = Math.round(innerHeight * .7);
+      const size = Math.round(height * 1.3);
+      const width = Math.round(size * .62);
+      const minTitle = document.querySelector(".hero h1 span")?.getBoundingClientRect();
+      const preferredLeft = (minTitle?.right || innerWidth * .58) + 12;
+      const left = Math.max(20, Math.min(preferredLeft, innerWidth - width - 20));
+      const top = Math.round((innerHeight - height) / 2);
+      digitCanvas.width = width;
+      digitCanvas.height = height;
+      digitCtx.clearRect(0, 0, width, height);
+      digitCtx.strokeStyle = "#fff";
+      digitCtx.lineWidth = Math.max(5, size * .018);
+      digitCtx.lineJoin = "round";
+      digitCtx.lineCap = "round";
+      digitCtx.font = `800 ${size}px Inter, Arial, sans-serif`;
+      digitCtx.textAlign = "center";
+      digitCtx.textBaseline = "middle";
+      digitCtx.strokeText(digit, width / 2, height / 2 + size * .018);
+      const pixels = digitCtx.getImageData(0, 0, width, height).data;
+      const samples = [];
+      const step = Math.max(4, Math.round(size / 68));
+      for (let y = 0; y < height; y += step) {
+        for (let x = 0; x < width; x += step) {
+          if (pixels[(y * width + x) * 4 + 3] > 80) samples.push({ x: left + x, y: top + y });
+        }
+      }
+      return samples;
+    };
+    const rebuildDigitTargets = () => {
+      digitTargets = {
+        9: makeDigitTargets("9"),
+        7: makeDigitTargets("7"),
+        5: makeDigitTargets("5")
+      };
+    };
+    const resize = () => {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = innerWidth * dpr;
+      canvas.height = innerHeight * dpr;
+      canvas.style.width = `${innerWidth}px`;
+      canvas.style.height = `${innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.min(650, Math.max(360, Math.floor(innerWidth / 2.5)));
+      points = Array.from({ length: count }, () => ({
+        x: Math.random() * innerWidth,
+        y: Math.random() * innerHeight,
+        homeX: Math.random() * innerWidth,
+        homeY: Math.random() * innerHeight,
+        fromX: 0,
+        fromY: 0,
+        r: Math.random() * 1.45 + .25,
+        phase: Math.random() * Math.PI * 2,
+        twinkleSpeed: .0012 + Math.random() * .0032,
+        twinkleStrength: .25 + Math.random() * .5,
+        backgroundTwinkle: Math.random() < .16,
+        digitTwinkle: Math.random() < .88,
+        flareStrength: .65 + Math.random() * .65,
+        shapeRank: 0
+      }));
+      points.forEach(point => {
+        point.homeX = point.x;
+        point.homeY = point.y;
+        point.fromX = point.x;
+        point.fromY = point.y;
+      });
+      [...points].sort((a, b) => b.homeX - a.homeX).forEach((point, index) => { point.shapeRank = index; });
+      rebuildDigitTargets();
+    };
+    const rotatedHome = point => {
+      const cx = innerWidth / 2;
+      const cy = innerHeight / 2;
+      const dx = point.homeX - cx;
+      const dy = point.homeY - cy;
+      const cos = Math.cos(rotation);
+      const sin = Math.sin(rotation);
+      return {
+        x: cx + dx * cos - dy * sin,
+        y: cy + dx * sin + dy * cos
+      };
+    };
+    const draw = () => {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      if (!reduced) rotation += .000035;
+      const targets = activeDigit ? digitTargets[activeDigit] || [] : [];
+      const gatherCount = targets.length ? Math.floor(Math.min(points.length * .78, targets.length * 1.7)) : 0;
+      const gatherProgress = activeDigit ? reduced ? 1 : Math.min(1, (Date.now() - gatherStartedAt) / gatherDuration) : 1;
+      const gatherEase = 1 - Math.pow(1 - gatherProgress, 3);
+      points.forEach((p, i) => {
+        const home = rotatedHome(p);
+        const isGatheringStar = gatherCount && p.shapeRank < gatherCount;
+        const target = isGatheringStar
+          ? targets[Math.min(targets.length - 1, Math.floor(p.shapeRank * targets.length / gatherCount))]
+          : home;
+        if (activeDigit && gatherProgress < 1) {
+          p.x = p.fromX + (target.x - p.fromX) * gatherEase;
+          p.y = p.fromY + (target.y - p.fromY) * gatherEase;
+        } else if (activeDigit) {
+          p.x = target.x;
+          p.y = target.y;
+        } else {
+          p.x += (home.x - p.x) * .032;
+          p.y += (home.y - p.y) * .032;
+        }
+        const twinkleWave = Math.pow((Math.sin(Date.now() * p.twinkleSpeed + p.phase) + 1) / 2, 5);
+        const shouldTwinkle = activeDigit && isGatheringStar ? p.digitTwinkle : p.backgroundTwinkle;
+        const digitTwinkleFactor = activeDigit && isGatheringStar ? .24 : 1;
+        const twinkleBoost = shouldTwinkle ? twinkleWave * p.twinkleStrength * digitTwinkleFactor : 0;
+        const baseOpacity = .42 + Math.sin(rotation * 60 + p.phase) * .1;
+        const starScale = (activeDigit && isGatheringStar ? 1.38 : 1) * (1 + twinkleBoost * .32);
+        ctx.beginPath();
+        ctx.fillStyle = activeDigit && isGatheringStar
+          ? i % 5 === 0 ? "rgba(112,220,255,1)" : `rgba(255,255,255,${Math.min(1, .72 + twinkleBoost)})`
+          : i % 5 === 0 ? `rgba(112,220,255,${Math.min(1, .62 + twinkleBoost)})` : `rgba(255,255,255,${Math.min(1, baseOpacity + twinkleBoost)})`;
+        ctx.arc(p.x, p.y, p.r * starScale, 0, Math.PI * 2);
+        ctx.fill();
+        if (shouldTwinkle && twinkleWave > .68) {
+          const flarePeak = Math.pow((twinkleWave - .68) / .32, 1.6);
+          const flareLength = (activeDigit && isGatheringStar ? 8 : 9) * p.flareStrength * flarePeak;
+          const flareAlpha = Math.min(1, flarePeak * (activeDigit && isGatheringStar ? .18 : .58));
+          const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, Math.max(5, flareLength * .72));
+          glow.addColorStop(0, `rgba(255,255,255,${flareAlpha * .9})`);
+          glow.addColorStop(.25, `rgba(145,220,255,${flareAlpha * .42})`);
+          glow.addColorStop(1, "rgba(112,190,255,0)");
+          ctx.beginPath();
+          ctx.fillStyle = glow;
+          ctx.arc(p.x, p.y, Math.max(5, flareLength * .72), 0, Math.PI * 2);
+          ctx.fill();
+          const flareGradientH = ctx.createLinearGradient(p.x - flareLength, p.y, p.x + flareLength, p.y);
+          flareGradientH.addColorStop(0, "rgba(255,255,255,0)");
+          flareGradientH.addColorStop(.5, `rgba(255,255,255,${flareAlpha})`);
+          flareGradientH.addColorStop(1, "rgba(255,255,255,0)");
+          ctx.beginPath();
+          ctx.strokeStyle = flareGradientH;
+          ctx.lineWidth = .7;
+          ctx.moveTo(p.x - flareLength, p.y);
+          ctx.lineTo(p.x + flareLength, p.y);
+          ctx.stroke();
+          const flareGradientV = ctx.createLinearGradient(p.x, p.y - flareLength, p.x, p.y + flareLength);
+          flareGradientV.addColorStop(0, "rgba(255,255,255,0)");
+          flareGradientV.addColorStop(.5, `rgba(210,240,255,${flareAlpha * .9})`);
+          flareGradientV.addColorStop(1, "rgba(255,255,255,0)");
+          ctx.beginPath();
+          ctx.strokeStyle = flareGradientV;
+          ctx.lineWidth = .7;
+          ctx.moveTo(p.x, p.y - flareLength);
+          ctx.lineTo(p.x, p.y + flareLength);
+          ctx.stroke();
+        }
+        for (let j = i + 1; j < Math.min(points.length, i + 24); j++) {
+          const q = points[j], dx = p.x - q.x, dy = p.y - q.y, d = Math.hypot(dx, dy);
+          if (d < 72) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(130,160,255,${(1 - d / 72) * (activeDigit ? .24 : .12)})`;
+            ctx.lineWidth = .6;
+            ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+          }
+        }
+      });
+      if (!reduced) requestAnimationFrame(draw);
+    };
+    resize();
+    draw();
+    addEventListener("resize", resize);
+    const syncActiveDigit = () => {
+      const nextDigit = hoveredDigit || autoDigit;
+      if (nextDigit !== activeDigit) {
+        points.forEach(point => {
+          point.fromX = point.x;
+          point.fromY = point.y;
+        });
+        gatherStartedAt = Date.now();
+        activeDigit = nextDigit;
+      }
+      if (reduced) draw();
+    };
+    const startAutoDigitLoop = () => {
+      const digits = ["9", "7", "5"];
+      autoDigit = digits[autoDigitIndex];
+      syncActiveDigit();
+      autoDigitTimer = setInterval(() => {
+        autoDigitIndex = (autoDigitIndex + 1) % digits.length;
+        autoDigit = digits[autoDigitIndex];
+        syncActiveDigit();
+      }, 2500);
+    };
+    setTimeout(startAutoDigitLoop, 2000);
+    document.querySelectorAll("[data-star-digit]").forEach(signal => {
+      const activate = () => {
+        hoveredDigit = signal.dataset.starDigit;
+        syncActiveDigit();
+      };
+      const deactivate = () => {
+        hoveredDigit = null;
+        syncActiveDigit();
+      };
+      signal.addEventListener("pointerenter", activate);
+      signal.addEventListener("pointerleave", deactivate);
+      signal.addEventListener("focus", activate);
+      signal.addEventListener("blur", deactivate);
+    });
+  </script>
+</body>
+</html>
